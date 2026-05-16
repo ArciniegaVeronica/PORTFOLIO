@@ -1,0 +1,1580 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO primario -->
+  <title>Verónica Arciniega — Diseñadora UX/UI & Multidisciplinar</title>
+  <meta name="description" content="Portfolio de Verónica Arciniega, diseñadora UX/UI, producto y gráfica con más de 3 años de experiencia. Disponible para proyectos en España y a nivel internacional.">
+  <meta name="author" content="Verónica Arciniega">
+  <meta name="keywords" content="diseñadora UX UI, portfolio diseño, product designer, diseño gráfico, Figma, España">
+
+  <!-- Open Graph (LinkedIn, WhatsApp, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://averonicaarciniegap.github.io/">
+  <meta property="og:title" content="Verónica Arciniega — Diseñadora UX/UI & Multidisciplinar">
+  <meta property="og:description" content="Portfolio de diseño UX/UI, producto y gráfico. Más de 3 años creando experiencias digitales estratégicas.">
+  <meta property="og:image" content="assets/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Verónica Arciniega — Diseñadora UX/UI">
+  <meta name="twitter:description" content="Portfolio de diseño UX/UI, producto y gráfico.">
+  <meta name="twitter:image" content="assets/og-image.jpg">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://averonicaarciniegap.github.io/">
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── DESIGN TOKENS ─────────────────────────────────────── */
+    :root {
+      --bg:          #0a0a0f;
+      --surface:     #16161d;
+      --card:        #1a1a24;
+      --card-soft:   #0d0d14;
+      --text:        #f5f5f7;
+      --text-muted:  rgba(245,245,247,0.55);
+      --text-faint:  rgba(245,245,247,0.25);
+      --primary:     #6366f1;
+      --secondary:   #ec4899;
+      --tiffany:     #0ABAB5;
+      --accent-soft: rgba(99,102,241,0.12);
+      --border:      rgba(255,255,255,0.08);
+      --border-mid:  rgba(255,255,255,0.14);
+      --tag-bg:      rgba(255,255,255,0.04);
+      --tag-text:    rgba(255,255,255,0.58);
+      --shadow:      0 20px 60px rgba(0,0,0,0.35);
+
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-xl:   32px;
+      --radius-full: 9999px;
+
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    [data-theme="light"] {
+      --bg:          #f8f8fc;
+      --surface:     #ffffff;
+      --card:        #ffffff;
+      --card-soft:   #f0f0f8;
+      --text:        #0a0a0f;
+      --text-muted:  rgba(10,10,15,0.55);
+      --text-faint:  rgba(10,10,15,0.25);
+      --primary:     #4f46e5;
+      --secondary:   #db2777;
+      --tiffany:     #0899A5;
+      --accent-soft: rgba(79,70,229,0.08);
+      --border:      rgba(0,0,0,0.07);
+      --border-mid:  rgba(0,0,0,0.12);
+      --tag-bg:      rgba(0,0,0,0.04);
+      --tag-text:    rgba(0,0,0,0.55);
+      --shadow:      0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    /* ─── RESET & BASE ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* Accessibility: skip link */
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      z-index: 9999;
+      padding: 12px 20px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 14px;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 16px; outline: 3px solid #fff; outline-offset: 2px; }
+
+    /* Focus ring global */
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ─── TYPOGRAPHY HELPERS ────────────────────────────────── */
+    .mono { font-family: var(--font-mono); }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ─── LAYOUT UTILITIES ──────────────────────────────────── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    section { padding: 120px 0; }
+
+    /* ─── NAVIGATION ────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .nav__inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav__logo { height: 36px; width: auto; transition: transform var(--transition-bounce); }
+    .nav__brand:hover .nav__logo { transform: scale(1.06); }
+
+    .nav__brand-text {
+      padding-left: 14px;
+      border-left: 1px solid var(--border-mid);
+      line-height: 1.2;
+    }
+    .nav__brand-text strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .nav__brand-text span {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nav__links {
+      display: none;
+      gap: 32px;
+      list-style: none;
+    }
+    @media (min-width: 768px) { .nav__links { display: flex; } }
+
+    .nav__links a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color var(--transition);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+    .nav__links a:hover { color: var(--text); }
+    .nav__links a:hover::after { width: 100%; }
+
+    .nav__controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border-mid);
+    }
+
+    .nav__cta {
+      display: none;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      background: var(--primary);
+      color: #fff !important;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .nav__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(99,102,241,0.4);
+    }
+    @media (min-width: 640px) { .nav__cta { display: block; } }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .lang-switcher__sep { color: var(--text-faint); }
+    .lang-btn {
+      color: var(--text-faint);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      transition: color var(--transition);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 2px;
+    }
+    .lang-btn[aria-pressed="true"] { color: var(--primary); }
+    .lang-btn:hover { color: var(--text); }
+
+    .theme-toggle {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-full);
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border-mid);
+      color: var(--text-muted);
+      transition: background var(--transition), color var(--transition), transform var(--transition-bounce);
+    }
+    .theme-toggle:hover { background: var(--surface); color: var(--text); transform: rotate(20deg); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    #home {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 68px;
+    }
+
+    .hero__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.22;
+      animation: float 10s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero__orb--a { width: 500px; height: 500px; top: -100px; left: -100px; background: var(--primary); }
+    .hero__orb--b { width: 400px; height: 400px; bottom: -80px; right: -80px; background: var(--secondary); animation-delay: -5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%       { transform: translate(40px,-40px) scale(1.05); }
+      66%       { transform: translate(-30px,30px) scale(0.97); }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+
+    .hero__eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s ease forwards;
+    }
+
+    .hero__title {
+      font-size: clamp(52px, 10vw, 110px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.25s ease forwards;
+    }
+
+    .hero__subtitle {
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+
+    .hero__desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 44px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.55s ease forwards;
+    }
+
+    .hero__cta {
+      opacity: 0;
+      animation: fadeUp 0.8s 0.7s ease forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: var(--radius-full);
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform var(--transition-bounce), box-shadow var(--transition);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(99,102,241,0.45);
+    }
+    .btn-primary svg { width: 16px; height: 16px; transition: transform var(--transition); }
+    .btn-primary:hover svg { transform: translateX(4px); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTION HEADER ────────────────────────────────────── */
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .section-header h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-top: 10px;
+    }
+
+    /* ─── PROJECTS ──────────────────────────────────────────── */
+    #projects { background: var(--surface); }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 56px;
+    }
+
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-mid);
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover { border-color: var(--primary); color: var(--text); }
+    .filter-btn[aria-pressed="true"] {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+    .project-card[hidden] { display: none; }
+    .project-card.filtering { opacity: 0; transform: translateY(12px); }
+
+    .project-card__image {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      position: relative;
+      background: var(--card-soft);
+    }
+    .project-card__image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .project-card:hover .project-card__image img { transform: scale(1.06); }
+
+    /* Placeholder cuando no hay imagen */
+    .project-card__placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .project-card__placeholder svg { opacity: 0.15; }
+
+    .project-card__body { padding: 28px 32px 32px; }
+
+    .project-card__tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+
+    .project-card__title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .project-card__desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .project-card__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--tag-text);
+    }
+
+    /* ─── ABOUT ─────────────────────────────────────────────── */
+    .about__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    @media (min-width: 1024px) {
+      .about__inner { grid-template-columns: 5fr 7fr; }
+    }
+
+    .about__photo-wrap {
+      position: relative;
+      max-width: 420px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .about__photo-glow {
+      position: absolute;
+      inset: -20px;
+      border-radius: 36px;
+      background: var(--primary);
+      filter: blur(32px);
+      opacity: 0.15;
+      transition: opacity var(--transition);
+    }
+    .about__photo-wrap:hover .about__photo-glow { opacity: 0.28; }
+
+    .about__photo {
+      position: relative;
+      aspect-ratio: 4/5;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--border-mid);
+      box-shadow: var(--shadow);
+    }
+    .about__photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.7s ease;
+    }
+    .about__photo-wrap:hover .about__photo img { filter: grayscale(0%); }
+
+    .about__content .label { margin-bottom: 16px; }
+
+    .about__text {
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+    .about__text strong { color: var(--primary); font-weight: 700; }
+
+    .about__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .stat__number {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat__label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-faint);
+      font-weight: 700;
+    }
+
+    /* ─── SKILLS ────────────────────────────────────────────── */
+    #skills { background: var(--surface); }
+
+    .skills__header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 72px;
+    }
+    .skills__header h2 {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .skills__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 1024px) {
+      .skills__grid { grid-template-columns: 7fr 5fr; gap: 64px; }
+    }
+
+    .skill-group {
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .skill-group:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .skill-group__head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .skill-group__num {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text-faint);
+      line-height: 1;
+      transition: color var(--transition);
+    }
+    .skill-group:hover .skill-group__num { color: var(--primary); }
+    .skill-group__title {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 18px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-full);
+      color: var(--tag-text);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: default;
+    }
+    .tag:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-3px) scale(1.05);
+      border-color: transparent;
+    }
+
+    /* Idiomas */
+    .lang-bars { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; }
+    @media (max-width: 480px) { .lang-bars { grid-template-columns: 1fr; } }
+
+    .lang-item__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 8px;
+    }
+    .lang-item__name {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .lang-item__level {
+      font-size: 10px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .lang-bar-track {
+      height: 3px;
+      background: var(--border-mid);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .lang-bar-fill {
+      height: 100%;
+      background: var(--tiffany);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* Profile card */
+    .profile-card {
+      background: color-mix(in srgb, var(--card-soft) 70%, transparent);
+      border: 1px solid var(--border-mid);
+      border-radius: 36px;
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      backdrop-filter: blur(12px);
+    }
+
+    .profile-card__label { display: flex; align-items: center; gap: 10px; }
+    .profile-card__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #9d7dfa;
+    }
+    .profile-card__label-text {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: #9d7dfa;
+      font-weight: 700;
+    }
+    .profile-card__title {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-top: 6px;
+    }
+    .profile-card__title em {
+      font-style: italic;
+      font-weight: 300;
+      color: #9d7dfa;
+    }
+
+    .competency { position: relative; padding-left: 32px; padding-bottom: 36px; }
+    .competency:last-child { padding-bottom: 0; }
+
+    /* Línea vertical */
+    .competency::before {
+      content: '';
+      position: absolute;
+      left: 6px; top: 14px; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .competency:last-child::before { display: none; }
+
+    /* Punto */
+    .competency__dot {
+      position: absolute;
+      left: 0; top: 2px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      border: 1px solid var(--border-mid);
+      background: var(--card-soft);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition);
+    }
+    .competency__dot::after {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--text-faint);
+      transition: background var(--transition);
+    }
+    .competency:hover .competency__dot { border-color: #9d7dfa; }
+    .competency:hover .competency__dot::after { background: #9d7dfa; }
+
+    .competency__title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .competency__desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .profile-card__footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .footer-badge {
+      padding: 16px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: border-color var(--transition);
+    }
+    .footer-badge:hover { border-color: rgba(157,125,250,0.3); }
+    .footer-badge__micro {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #9d7dfa;
+      margin-bottom: 4px;
+    }
+    .footer-badge__text {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ─── CONTACT ───────────────────────────────────────────── */
+    .contact__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (min-width: 1024px) { .contact__inner { grid-template-columns: 1fr 1fr; } }
+
+    .contact__title {
+      font-size: clamp(52px, 8vw, 80px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      margin: 16px 0 24px;
+    }
+    .contact__desc {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 400px;
+      line-height: 1.7;
+    }
+
+    .contact__links { display: flex; flex-direction: column; gap: 12px; }
+
+    .cta-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 28px;
+      border-radius: 20px;
+      border: 1px solid var(--border-mid);
+      background: var(--tag-bg);
+      transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      color: var(--text);
+    }
+    .cta-link:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateX(10px);
+      border-color: var(--text);
+    }
+    .cta-link__meta { flex: 1; }
+    .cta-link__type {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .cta-link__value { font-size: clamp(14px, 2vw, 18px); font-weight: 700; }
+    .cta-link svg { flex-shrink: 0; width: 20px; height: 20px; transition: transform var(--transition); }
+    .cta-link:hover svg { transform: rotate(-45deg); }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
+    footer {
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-faint);
+    }
+
+    /* ─── SCROLL REVEAL ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      section { padding: 80px 0; }
+      .about__stats { grid-template-columns: repeat(2, 1fr); }
+      .lang-bars { grid-template-columns: 1fr; }
+    }
+
+    /* ─── REDUCED MOTION ────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Accesibilidad: saltar al contenido principal -->
+  <a href="#main-content" class="skip-link" data-t="skip_link">Saltar al contenido principal</a>
+
+  <!-- ─── NAV ───────────────────────────────────────────────── -->
+  <header>
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+      <div class="container nav__inner">
+
+        <a href="#home" class="nav__brand" aria-label="Verónica Arciniega — inicio">
+          <img src="Logo blanco.png" id="logo-dark" class="nav__logo" alt="Logo Verónica Arciniega" width="100" height="36">
+          <img src="Logo neg.png"    id="logo-light" class="nav__logo" alt="Logo Verónica Arciniega" width="100" height="36" style="display:none">
+          <div class="nav__brand-text" aria-hidden="true">
+            <strong>Verónica</strong>
+            <span>Arciniega</span>
+          </div>
+        </a>
+
+        <ul class="nav__links" role="list">
+          <li><a href="#home"     data-t="nav_home">Inicio</a></li>
+          <li><a href="#projects" data-t="nav_projects">Proyectos</a></li>
+          <li><a href="#about"    data-t="nav_about">Sobre Mí</a></li>
+          <li><a href="#skills"   data-t="nav_skills">Capacidades</a></li>
+        </ul>
+
+        <div class="nav__controls">
+          <a href="#contact" class="nav__cta" data-t="nav_cta">¿Hablamos?</a>
+
+          <div class="lang-switcher" role="group" aria-label="Cambiar idioma">
+            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')" aria-pressed="true"  aria-label="Cambiar a español">ES</button>
+            <span class="lang-switcher__sep" aria-hidden="true">|</span>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')" aria-pressed="false" aria-label="Switch to English">EN</button>
+          </div>
+
+          <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Cambiar tema" aria-live="polite">
+            <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            <svg id="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" style="display:none"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ─── HERO ─────────────────────────────────────────────── -->
+    <section id="home" aria-label="Presentación">
+      <div class="hero__orb hero__orb--a" aria-hidden="true"></div>
+      <div class="hero__orb hero__orb--b" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow" data-t="hero_intro">Hola, soy</p>
+        <h1 class="hero__title">Verónica<br>Arciniega</h1>
+        <h2 class="hero__subtitle gradient-text" data-t="hero_subtitle">Diseñadora UX/UI, Producto &amp; Multidisciplinar</h2>
+        <p class="hero__desc" data-t="hero_desc">Creando experiencias digitales que fusionan diseño estratégico con conexión humana profunda.</p>
+        <div class="hero__cta">
+          <a href="#projects" class="btn-primary" data-t="btn_work">
+            Ver Proyectos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROJECTS ──────────────────────────────────────────── -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="label" data-t="nav_projects">Proyectos</p>
+          <h2 id="projects-heading" data-t="work_title">Trabajo Seleccionado</h2>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filtrar proyectos por categoría">
+          <button class="filter-btn" data-category="all"     aria-pressed="true"  data-t="cat_all">Todos</button>
+          <button class="filter-btn" data-category="uxui"    aria-pressed="false">UX/UI</button>
+          <button class="filter-btn" data-category="graphic" aria-pressed="false" data-t="cat_graphic">Gráfico</button>
+          <button class="filter-btn" data-category="product" aria-pressed="false" data-t="cat_product">Producto</button>
+        </div>
+
+        <!-- Las tarjetas se inyectan aquí dinámicamente -->
+        <div id="projects-grid" class="projects-grid" aria-live="polite" aria-label="Lista de proyectos"></div>
+      </div>
+    </section>
+
+    <!-- ─── ABOUT ─────────────────────────────────────────────── -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about__inner">
+
+          <div class="about__photo-wrap reveal">
+            <div class="about__photo-glow" aria-hidden="true"></div>
+            <div class="about__photo">
+              <img src="FOTO4.jpg" alt="Fotografía de Verónica Arciniega" loading="lazy" width="400" height="500">
+            </div>
+          </div>
+
+          <div class="reveal">
+            <p class="label" data-t="nav_about">Sobre Mí</p>
+            <div id="about-content" class="about__text" aria-live="polite"></div>
+            <div class="about__stats" aria-label="Estadísticas profesionales">
+              <div class="stat">
+                <p class="stat__number">3+</p>
+                <p class="stat__label" data-t="stat_years">Años</p>
+              </div>
+              <div class="stat">
+                <p class="stat__number">50+</p>
+                <p class="stat__label" data-t="stat_projects">Proyectos</p>
+              </div>
+              <div class="stat">
+                <p class="stat__number">1k+</p>
+                <p class="stat__label" data-t="stat_ideas">Ideas</p>
+              </div>
+              <div class="stat">
+                <p class="stat__number">∞</p>
+                <p class="stat__label" data-t="stat_curiosity">Curiosidad</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SKILLS ────────────────────────────────────────────── -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+
+        <div class="skills__header reveal">
+          <p class="label">Expertise</p>
+          <h2 id="skills-heading" data-t="skills_title">Capacidades</h2>
+        </div>
+
+        <div class="skills__grid">
+
+          <!-- Izquierda: grupos de habilidades -->
+          <div>
+
+            <div class="skill-group reveal">
+              <div class="skill-group__head">
+                <span class="skill-group__num mono" aria-hidden="true">01</span>
+                <h3 class="skill-group__title" data-t="cat_design">Diseño Visual &amp; UX</h3>
+              </div>
+              <div class="tags" role="list" aria-label="Herramientas de diseño">
+                <span class="tag" role="listitem">Figma</span>
+                <span class="tag" role="listitem">Photoshop</span>
+                <span class="tag" role="listitem">Illustrator</span>
+                <span class="tag" role="listitem">InDesign</span>
+                <span class="tag" role="listitem">Adobe XD</span>
+                <span class="tag" role="listitem">Lightroom</span>
+                <span class="tag" role="listitem" data-t="skill_prototyping">Prototipado</span>
+                <span class="tag" role="listitem" data-t="skill_ai">Inteligencia Artificial</span>
+                <span class="tag" role="listitem" data-t="skill_wireframing">Wireframing</span>
+                <span class="tag" role="listitem" data-t="skill_research">UX Research</span>
+                <span class="tag" role="listitem">Miro / Mural</span>
+              </div>
+            </div>
+
+            <div class="skill-group reveal" style="transition-delay:0.1s">
+              <div class="skill-group__head">
+                <span class="skill-group__num mono" aria-hidden="true">02</span>
+                <h3 class="skill-group__title" data-t="cat_tech">Industrial &amp; 3D</h3>
+              </div>
+              <div class="tags" role="list" aria-label="Herramientas industriales y 3D">
+                <span class="tag" role="listitem">Rhino 3D</span>
+                <span class="tag" role="listitem">Fusion 360</span>
+                <span class="tag" role="listitem">Keyshot</span>
+                <span class="tag" role="listitem" data-t="skill_3d">Modelado 3D</span>
+                <span class="tag" role="listitem" data-t="skill_parametric">Diseño Paramétrico</span>
+                <span class="tag" role="listitem" data-t="skill_rendering">V-Ray Render</span>
+              </div>
+            </div>
+
+            <div class="skill-group reveal" style="transition-delay:0.2s">
+              <div class="skill-group__head">
+                <span class="skill-group__num mono" aria-hidden="true">03</span>
+                <h3 class="skill-group__title" data-t="cat_mgmt">Workflow</h3>
+              </div>
+              <div class="tags" role="list" aria-label="Herramientas de gestión">
+                <span class="tag" role="listitem">Jira</span>
+                <span class="tag" role="listitem">Trello</span>
+                <span class="tag" role="listitem">Azure DevOps</span>
+                <span class="tag" role="listitem">Office Suite</span>
+              </div>
+            </div>
+
+            <!-- Idiomas -->
+            <div class="skill-group reveal" style="transition-delay:0.3s;border-bottom:none">
+              <div class="skill-group__head">
+                <span class="skill-group__num mono" aria-hidden="true">04</span>
+                <h3 class="skill-group__title" data-t="cat_languages">Idiomas</h3>
+              </div>
+              <div class="lang-bars" role="list" aria-label="Nivel de idiomas">
+
+                <div class="lang-item" role="listitem">
+                  <div class="lang-item__head">
+                    <span class="lang-item__name" data-t="lang_es">Español</span>
+                    <span class="lang-item__level" style="color:var(--tiffany)" data-t="lvl_native">NATIVO</span>
+                  </div>
+                  <div class="lang-bar-track" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Español — nivel nativo">
+                    <div class="lang-bar-fill" style="width:100%"></div>
+                  </div>
+                </div>
+
+                <div class="lang-item" role="listitem">
+                  <div class="lang-item__head">
+                    <span class="lang-item__name" data-t="lang_en">Inglés</span>
+                    <span class="lang-item__level" style="color:var(--tiffany)">C1 / ADVANCED</span>
+                  </div>
+                  <div class="lang-bar-track" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Inglés — nivel C1 avanzado">
+                    <div class="lang-bar-fill" style="width:90%"></div>
+                  </div>
+                </div>
+
+                <div class="lang-item" role="listitem">
+                  <div class="lang-item__head">
+                    <span class="lang-item__name" data-t="lang_it">Italiano</span>
+                    <span class="lang-item__level" style="color:var(--text-faint)" data-t="lvl_basic">BÁSICO</span>
+                  </div>
+                  <div class="lang-bar-track" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Italiano — nivel básico">
+                    <div class="lang-bar-fill" style="width:30%;opacity:0.4"></div>
+                  </div>
+                </div>
+
+                <div class="lang-item" role="listitem">
+                  <div class="lang-item__head">
+                    <span class="lang-item__name" data-t="lang_de">Alemán</span>
+                    <span class="lang-item__level" style="color:var(--text-faint)" data-t="lvl_basic">BÁSICO</span>
+                  </div>
+                  <div class="lang-bar-track" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Alemán — nivel básico">
+                    <div class="lang-bar-fill" style="width:25%;opacity:0.4"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Derecha: perfil soft skills -->
+          <div class="reveal" style="transition-delay:0.15s">
+            <div class="profile-card">
+
+              <div>
+                <div class="profile-card__label">
+                  <div class="profile-card__dot" aria-hidden="true"></div>
+                  <span class="profile-card__label-text" data-t="soft_skills_label">Competencias Clave</span>
+                </div>
+                <h3 class="profile-card__title">Perfil <em data-t="profile_adj">Multidisciplinar</em></h3>
+              </div>
+
+              <div role="list" aria-label="Competencias profesionales">
+
+                <div class="competency" role="listitem">
+                  <div class="competency__dot" aria-hidden="true"></div>
+                  <h4 class="competency__title" data-t="soft_1_title">Creatividad Estratégica</h4>
+                  <p class="competency__desc" data-t="soft_1_desc">Fusión de pensamiento crítico y diseño industrial para resolver problemas de producto complejos con soluciones estéticas y funcionales.</p>
+                </div>
+
+                <div class="competency" role="listitem">
+                  <div class="competency__dot" aria-hidden="true"></div>
+                  <h4 class="competency__title" data-t="soft_2_title">Resiliencia Técnica</h4>
+                  <p class="competency__desc" data-t="soft_2_desc">Adaptabilidad avanzada a nuevos softwares y entornos dinámicos, manteniendo la eficiencia bajo metodologías ágiles y flujos técnicos.</p>
+                </div>
+
+                <div class="competency" role="listitem">
+                  <div class="competency__dot" aria-hidden="true"></div>
+                  <h4 class="competency__title" data-t="soft_3_title">Colaboración Eficaz</h4>
+                  <p class="competency__desc" data-t="soft_3_desc">Liderazgo proactivo y comunicación asertiva en equipos multidisciplinares, actuando como nexo entre la visión creativa y la ejecución final.</p>
+                </div>
+
+              </div>
+
+              <div class="profile-card__footer" role="list" aria-label="Pilares profesionales">
+                <div class="footer-badge" role="listitem">
+                  <p class="footer-badge__micro">Mindset</p>
+                  <p class="footer-badge__text" data-t="badge_mindset">Solución Crítica</p>
+                </div>
+                <div class="footer-badge" role="listitem">
+                  <p class="footer-badge__micro">Core</p>
+                  <p class="footer-badge__text">User Centered</p>
+                </div>
+                <div class="footer-badge" role="listitem">
+                  <p class="footer-badge__micro">Goal</p>
+                  <p class="footer-badge__text" data-t="badge_goal">Excelencia Técnica</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── CONTACT ───────────────────────────────────────────── -->
+    <section id="contact" aria-labelledby="contact-heading" style="border-top:1px solid var(--border)">
+      <div class="container">
+        <div class="contact__inner">
+
+          <div class="reveal">
+            <p class="label" data-t="contact_label">Próximo paso</p>
+            <h2 id="contact-heading" class="contact__title" data-t="contact_title">¿Hablamos?</h2>
+            <p class="contact__desc" data-t="contact_invite">Me apasiona aportar un enfoque innovador y soluciones creativas a equipos que buscan ir un paso más allá.</p>
+          </div>
+
+          <div class="contact__links reveal" style="transition-delay:0.1s">
+
+            <a href="mailto:avap2704@gmail.com" class="cta-link" aria-label="Enviar email a avap2704@gmail.com">
+              <div class="cta-link__meta">
+                <p class="cta-link__type">Email</p>
+                <p class="cta-link__value">avap2704@gmail.com</p>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="tel:+34610128985" class="cta-link" aria-label="Llamar al +34 610 128 985">
+              <div class="cta-link__meta">
+                <p class="cta-link__type" data-t="lbl_phone">Teléfono</p>
+                <p class="cta-link__value">+34 610 128 985</p>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <a href="https://www.linkedin.com/in/averonicaarciniegap" target="_blank" rel="noopener noreferrer" class="cta-link" aria-label="Ver perfil de LinkedIn (abre en nueva ventana)">
+              <div class="cta-link__meta">
+                <p class="cta-link__type">LinkedIn</p>
+                <p class="cta-link__value">@averonicaarciniegap</p>
+              </div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer role="contentinfo">
+    <p data-t="footer_copy">© 2026 Verónica Arciniega — Diseñadora Multidisciplinar</p>
+  </footer>
+
+  <!-- ─── SCRIPTS ───────────────────────────────────────────── -->
+  <script>
+  /* ══════════════════════════════════════════════
+     TRANSLATIONS
+  ══════════════════════════════════════════════ */
+  const i18n = {
+    es: {
+      skip_link:      "Saltar al contenido principal",
+      nav_home:       "Inicio",
+      nav_projects:   "Proyectos",
+      nav_about:      "Sobre Mí",
+      nav_skills:     "Capacidades",
+      nav_cta:        "¿Hablamos?",
+      hero_intro:     "Hola, soy",
+      hero_subtitle:  "Diseñadora UX/UI, Producto & Multidisciplinar",
+      hero_desc:      "Diseño con propósito desde Madrid. UX/UI, producto y gráfico — donde la visión estratégica y el detalle visual se encuentran.",
+      btn_work:       "Ver Proyectos",
+      work_title:     "Trabajo Seleccionado",
+      cat_all:        "Todos",
+      cat_graphic:    "Gráfico",
+      cat_product:    "Producto",
+      skills_title:   "Capacidades",
+      cat_design:     "Diseño Visual & UX",
+      cat_tech:       "Industrial & 3D",
+      cat_mgmt:       "Workflow",
+      cat_languages:  "Idiomas",
+      lang_es:        "Español",
+      lang_en:        "Inglés",
+      lang_it:        "Italiano",
+      lang_de:        "Alemán",
+      lvl_native:     "NATIVO",
+      lvl_basic:      "BÁSICO",
+      skill_prototyping: "Prototipado",
+      skill_ai:       "Inteligencia Artificial",
+      skill_wireframing: "Wireframing",
+      skill_research: "UX Research",
+      skill_3d:       "Modelado 3D",
+      skill_parametric: "Diseño Paramétrico",
+      skill_rendering: "V-Ray Render",
+      soft_skills_label: "Competencias Clave",
+      profile_adj:    "Multidisciplinar",
+      soft_1_title:   "Creatividad Estratégica",
+      soft_1_desc:    "Fusión de pensamiento crítico y diseño industrial para resolver problemas de producto complejos con soluciones estéticas y funcionales.",
+      soft_2_title:   "Resiliencia Técnica",
+      soft_2_desc:    "Adaptabilidad avanzada a nuevos softwares y entornos dinámicos, manteniendo la eficiencia bajo metodologías ágiles y flujos técnicos.",
+      soft_3_title:   "Colaboración Eficaz",
+      soft_3_desc:    "Liderazgo proactivo y comunicación asertiva en equipos multidisciplinares, actuando como nexo entre la visión creativa y la ejecución final.",
+      stat_years:     "Años",
+      stat_projects:  "Proyectos",
+      stat_ideas:     "Ideas",
+      stat_curiosity: "Curiosidad",
+      contact_label:  "Próximo paso",
+      contact_title:  "¿Hablamos?",
+      contact_invite: "Me apasiona aportar un enfoque innovador y soluciones creativas a equipos que buscan ir un paso más allá. Si crees que mi perfil encaja con lo que buscas, hablemos.",
+      lbl_phone:      "Teléfono",
+      badge_mindset:  "Solución Crítica",
+      badge_goal:     "Excelencia Técnica",
+      footer_copy:    "© 2026 Verónica Arciniega — Diseñadora Multidisciplinar",
+      about_body:     "Soy **Verónica Arciniega**, diseñadora UX/UI, de producto y gráfica con base en **Madrid**.<br><br>Me apasiona diseñar con propósito: resolver problemas reales a través de la creatividad y el pensamiento estratégico. Mi perfil combina **visión de producto con detalle visual**, lo que me permite moverme con soltura entre la investigación de usuario, el prototipado de alta fidelidad y la identidad de marca.<br><br>Estoy preparada para asumir **nuevos retos que me permitan crecer** profesionalmente y aportar valor real a equipos que buscan ir un paso más allá."
+    },
+    en: {
+      skip_link:      "Skip to main content",
+      nav_home:       "Home",
+      nav_projects:   "Projects",
+      nav_about:      "About Me",
+      nav_skills:     "Skills",
+      nav_cta:        "Let's Talk!",
+      hero_intro:     "Hi, I'm",
+      hero_subtitle:  "UX/UI, Product & Multidisciplinary Designer",
+      hero_desc:      "Designing with purpose from Madrid. UX/UI, product and graphic — where strategic vision and visual detail meet.",
+      btn_work:       "View Projects",
+      work_title:     "Selected Work",
+      cat_all:        "All",
+      cat_graphic:    "Graphic",
+      cat_product:    "Product",
+      skills_title:   "Capabilities",
+      cat_design:     "Visual & UX Design",
+      cat_tech:       "Industrial & 3D",
+      cat_mgmt:       "Workflow",
+      cat_languages:  "Languages",
+      lang_es:        "Spanish",
+      lang_en:        "English",
+      lang_it:        "Italian",
+      lang_de:        "German",
+      lvl_native:     "NATIVE",
+      lvl_basic:      "BASIC",
+      skill_prototyping: "Prototyping",
+      skill_ai:       "Artificial Intelligence",
+      skill_wireframing: "Wireframing",
+      skill_research: "UX Research",
+      skill_3d:       "3D Modeling",
+      skill_parametric: "Parametric Design",
+      skill_rendering: "V-Ray Render",
+      soft_skills_label: "Core Competencies",
+      profile_adj:    "Multidisciplinary",
+      soft_1_title:   "Strategic Creativity",
+      soft_1_desc:    "Fusion of critical thinking and industrial design to solve complex product problems with aesthetic and functional solutions.",
+      soft_2_title:   "Technical Resilience",
+      soft_2_desc:    "Advanced adaptability to new software and dynamic environments, maintaining efficiency under agile methodologies and technical workflows.",
+      soft_3_title:   "Effective Collaboration",
+      soft_3_desc:    "Proactive leadership and assertive communication in multidisciplinary teams, acting as the bridge between creative vision and final execution.",
+      stat_years:     "Years",
+      stat_projects:  "Projects",
+      stat_ideas:     "Ideas",
+      stat_curiosity: "Curiosity",
+      contact_label:  "Next Step",
+      contact_title:  "Let's Talk!",
+      contact_invite: "I'm passionate about bringing an innovative approach and creative solutions to teams looking to go one step further. If you think my profile fits what you're looking for, let's talk.",
+      lbl_phone:      "Phone",
+      badge_mindset:  "Critical Thinking",
+      badge_goal:     "Technical Excellence",
+      footer_copy:    "© 2026 Verónica Arciniega — Multidisciplinary Designer",
+      about_body:     "I'm **Verónica Arciniega**, a UX/UI, product, and graphic designer based in **Madrid**.<br><br>I design with purpose — solving real problems through creativity and strategic thinking. My profile bridges **product vision and visual detail**, which lets me move fluidly between user research, high-fidelity prototyping, and brand identity.<br><br>I'm ready to take on **new challenges that let me grow** professionally and deliver real value to teams looking to go one step further."
+    }
+  };
+
+  /* ══════════════════════════════════════════════
+     STATE
+  ══════════════════════════════════════════════ */
+  let currentLang  = 'es';
+  let currentTheme = 'dark';
+  let projects     = [];
+
+  /* ══════════════════════════════════════════════
+     LANGUAGE
+  ══════════════════════════════════════════════ */
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+
+    // Meta description dinámica
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = lang === 'es'
+      ? 'Portfolio de Verónica Arciniega, diseñadora UX/UI, producto y gráfica con más de 3 años de experiencia.'
+      : 'Portfolio of Verónica Arciniega, UX/UI, product and graphic designer with over 3 years of experience.';
+
+    const t = i18n[lang];
+
+    // Traducir elementos con data-t
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const key = el.getAttribute('data-t');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+
+    // About body con markdown básico → HTML
+    const aboutEl = document.getElementById('about-content');
+    if (aboutEl) {
+      aboutEl.innerHTML = t.about_body
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    // Botones de idioma: aria-pressed
+    document.getElementById('btn-es').setAttribute('aria-pressed', lang === 'es');
+    document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+
+    // Re-renderizar proyectos con idioma actual
+    renderProjects(currentFilter);
+  }
+
+  /* ══════════════════════════════════════════════
+     THEME
+  ══════════════════════════════════════════════ */
+  function toggleTheme() {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    const isDark = currentTheme === 'dark';
+    document.getElementById('icon-moon').style.display  = isDark ? 'block' : 'none';
+    document.getElementById('icon-sun').style.display   = isDark ? 'none'  : 'block';
+    document.getElementById('logo-dark').style.display  = isDark ? 'block' : 'none';
+    document.getElementById('logo-light').style.display = isDark ? 'none'  : 'block';
+
+    const toggle = document.getElementById('theme-toggle');
+    toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+  }
+
+  /* ══════════════════════════════════════════════
+     PROJECTS — carga y renderizado dinámico
+  ══════════════════════════════════════════════ */
+  let currentFilter = 'all';
+
+  async function loadProjects() {
+    try {
+      const res = await fetch('projects.json');
+      projects = await res.json();
+    } catch(e) {
+      // Fallback inline si no carga el JSON (ej: abrir el HTML directamente sin servidor)
+      projects = [
+        {
+          id: 'thunder-gym',
+          category: 'uxui',
+          color: '#6366f1',
+          titleEs: 'Thunder Gym',
+          titleEn: 'Thunder Gym',
+          tagEs: 'UX/UI Design',
+          tagEn: 'UX/UI Design',
+          descEs: 'Diseño de la experiencia de una app de gimnasio mediante un proceso de ideación y prototipo de alta fidelidad, realizado en una prueba técnica de 72 horas.',
+          descEn: 'Designing a gym app experience through an ideation process and high-fidelity prototype, completed within a 72-hour technical test.',
+          image: '',
+          tags: ['Figma','UX Research','Prototipado'],
+          link: ''
+        },
+        {
+          id: 'identidad-artesanal',
+          category: 'graphic',
+          color: '#ec4899',
+          titleEs: 'Identidad Visual Artesanal',
+          titleEn: 'Handcrafted Visual Identity',
+          tagEs: 'Branding & Packaging',
+          tagEn: 'Branding & Packaging',
+          descEs: 'Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa.',
+          descEn: 'Brand and packaging creation for an organic product line, from naming to full visual identity.',
+          image: '',
+          tags: ['Illustrator','InDesign','Branding'],
+          link: ''
+        }
+      ];
+    }
+    renderProjects('all');
+  }
+
+  function renderProjects(filter) {
+    currentFilter = filter;
+    const grid = document.getElementById('projects-grid');
+    const lang = currentLang;
+    const t    = i18n[lang];
+
+    const filtered = filter === 'all'
+      ? projects
+      : projects.filter(p => p.category === filter);
+
+    grid.innerHTML = '';
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<p style="color:var(--text-muted);font-size:15px;grid-column:1/-1;text-align:center;padding:60px 0">${lang === 'es' ? 'No hay proyectos en esta categoría aún.' : 'No projects in this category yet.'}</p>`;
+      return;
+    }
+
+    filtered.forEach((p, i) => {
+      const title = lang === 'es' ? p.titleEs : p.titleEn;
+      const tag   = lang === 'es' ? p.tagEs   : p.tagEn;
+      const desc  = lang === 'es' ? p.descEs  : p.descEn;
+
+      const imageHTML = p.image
+        ? `<img src="${p.image}" alt="${title}" loading="lazy" width="640" height="360">`
+        : `<div class="project-card__placeholder" aria-hidden="true">
+             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
+               <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+             </svg>
+           </div>`;
+
+      const chipsHTML = p.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
+
+      const linkAttr  = p.link ? `href="${p.link}" target="_blank" rel="noopener noreferrer"` : '';
+      const tagEl     = p.link ? 'a' : 'article';
+      const extraAttr = p.link ? linkAttr : '';
+
+      const card = document.createElement('article');
+      card.className = 'project-card reveal';
+      card.style.transitionDelay = `${i * 0.08}s`;
+      card.setAttribute('data-category', p.category);
+
+      card.innerHTML = `
+        <div class="project-card__image">${imageHTML}</div>
+        <div class="project-card__body">
+          <p class="project-card__tag" style="color:${p.color}">${tag}</p>
+          <h3 class="project-card__title">${title}</h3>
+          <p class="project-card__desc">${desc}</p>
+          <div class="project-card__chips" aria-label="Herramientas utilizadas">${chipsHTML}</div>
+          ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top:20px;display:inline-flex;font-size:13px;padding:12px 24px" aria-label="Ver proyecto ${title}">${lang === 'es' ? 'Ver proyecto' : 'View project'} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
+        </div>`;
+
+      grid.appendChild(card);
+    });
+
+    // Activar scroll reveal en las nuevas tarjetas
+    observeReveal();
+  }
+
+  /* ══════════════════════════════════════════════
+     FILTERS
+  ══════════════════════════════════════════════ */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.setAttribute('aria-pressed', 'true');
+      renderProjects(btn.dataset.category);
+    });
+  });
+
+  /* ══════════════════════════════════════════════
+     SCROLL REVEAL (IntersectionObserver)
+  ══════════════════════════════════════════════ */
+  function observeReveal() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+  }
+
+  /* ══════════════════════════════════════════════
+     INIT
+  ══════════════════════════════════════════════ */
+  (async function init() {
+    await loadProjects();
+    setLanguage('es');
+    observeReveal();
+  })();
+  </script>
+
+</body>
+</html>

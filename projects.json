@@ -1,0 +1,44 @@
+[
+  {
+    "id": "thunder-gym",
+    "category": "uxui",
+    "color": "#6366f1",
+    "titleEs": "Thunder Gym",
+    "titleEn": "Thunder Gym",
+    "tagEs": "UX/UI Design · Prueba Técnica",
+    "tagEn": "UX/UI Design · Technical Test",
+    "descEs": "Diseño completo de una app de gimnasio en 72 horas: desde la investigación con User Persona y Customer Journey hasta el prototipo navegable de alta fidelidad en Figma. El reto cubría visualización de horarios de clases, inscripción, vacantes disponibles y sistema de alertas.",
+    "descEn": "Full design of a gym app in 72 hours: from User Persona and Customer Journey research to a high-fidelity navigable Figma prototype. The challenge covered class schedule visualization, enrollment, available spots, and a notification alert system.",
+    "image": "assets/thunder-gym.jpg",
+    "tags": ["Figma", "UX Research", "Crazy 8's", "Wireframing", "Prototipado"],
+    "link": "https://embed.figma.com/proto/4gkdp2CwIaHrMR7Mqe8P4B/VERONICA-ARCINIEGA---PRUEBA-T%C3%89CNICA-UX-DESIGN?page-id=13%3A4&node-id=129-2435&node-type=canvas&viewport=2325%2C-1902%2C0.54&scaling=scale-down&content-scaling=fixed&starting-point-node-id=129%3A2435&embed-host=share"
+  },
+  {
+    "id": "hexalud-wellness",
+    "category": "uxui",
+    "color": "#0ABAB5",
+    "titleEs": "Hexalud Wellness",
+    "titleEn": "Hexalud Wellness",
+    "tagEs": "UX/UI · Diseño Gráfico",
+    "tagEn": "UX/UI · Graphic Design",
+    "descEs": "Proyecto integral para una marca de bienestar: diseño de recursos visuales, wireframes, prototipo de interfaz y banners de comunicación. Un trabajo que combina identidad gráfica y experiencia de usuario bajo una misma visión de marca.",
+    "descEn": "End-to-end project for a wellness brand: visual asset design, wireframes, UI prototype, and communication banners. A project combining graphic identity and user experience under a unified brand vision.",
+    "image": "assets/hexalud-wellness.jpg",
+    "tags": ["Figma", "Illustrator", "Branding", "Wireframing"],
+    "link": ""
+  },
+  {
+    "id": "identidad-artesanal",
+    "category": "graphic",
+    "color": "#ec4899",
+    "titleEs": "Identidad Visual Artesanal",
+    "titleEn": "Handcrafted Visual Identity",
+    "tagEs": "Branding & Packaging",
+    "tagEn": "Branding & Packaging",
+    "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa. Paleta, tipografía, logotipo y sistema de empaque coherente con los valores naturales de la marca.",
+    "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity. Palette, typography, logo, and packaging system aligned with the brand's natural values.",
+    "image": "assets/identidad-artesanal.jpg",
+    "tags": ["Illustrator", "InDesign", "Branding", "Packaging"],
+    "link": ""
+  }
+]
