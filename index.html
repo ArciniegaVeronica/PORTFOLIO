@@ -1479,11 +1479,17 @@
     renderProjects('all');
   }
 
+  // Convierte \n\n en párrafos HTML
+  function toParas(text) {
+    return text.split('\n\n')
+      .map(p => `<p style="margin-bottom:12px;line-height:1.65">${p.trim()}</p>`)
+      .join('');
+  }
+
   function renderProjects(filter) {
     currentFilter = filter;
     const grid = document.getElementById('projects-grid');
     const lang = currentLang;
-    const t    = i18n[lang];
 
     const filtered = filter === 'all'
       ? projects
@@ -1497,9 +1503,27 @@
     }
 
     filtered.forEach((p, i) => {
-      const title = lang === 'es' ? p.titleEs : p.titleEn;
-      const tag   = lang === 'es' ? p.tagEs   : p.tagEn;
-      const desc  = lang === 'es' ? p.descEs  : p.descEn;
+      const title    = lang === 'es' ? p.titleEs : p.titleEn;
+      const tagLabel = lang === 'es' ? p.tagEs   : p.tagEn;
+      const desc     = lang === 'es' ? p.descEs  : p.descEn;
+
+      // Descripción: si es larga mostramos preview + "Leer más"
+      const isLong      = desc.length > 220;
+      const shortDesc   = isLong ? desc.split('\n\n')[0] : desc;
+      const readMoreLbl = lang === 'es' ? 'Leer más del proceso' : 'Read more about the process';
+      const readLessLbl = lang === 'es' ? 'Cerrar' : 'Close';
+
+      const descHTML = isLong
+        ? `<div class="desc-short">${toParas(shortDesc)}</div>
+           <div class="desc-full" style="display:none">${toParas(desc)}</div>
+           <button class="read-more-btn" aria-expanded="false"
+             style="margin-top:8px;margin-bottom:4px;font-size:12px;font-family:var(--font-mono);
+                    text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);
+                    background:none;border:none;cursor:pointer;padding:0;font-weight:700;"
+             onclick="toggleDesc(this,'${readMoreLbl}','${readLessLbl}')">
+             ${readMoreLbl} ↓
+           </button>`
+        : `<div>${toParas(shortDesc)}</div>`;
 
       const imageHTML = p.image
         ? `<img src="${p.image}" alt="${title}" loading="lazy" width="640" height="360">`
@@ -1509,11 +1533,7 @@
              </svg>
            </div>`;
 
-      const chipsHTML = p.tags.map(tag => `<span class="chip">${tag}</span>`).join('');
-
-      const linkAttr  = p.link ? `href="${p.link}" target="_blank" rel="noopener noreferrer"` : '';
-      const tagEl     = p.link ? 'a' : 'article';
-      const extraAttr = p.link ? linkAttr : '';
+      const chipsHTML = p.tags.map(t => `<span class="chip">${t}</span>`).join('');
 
       const card = document.createElement('article');
       card.className = 'project-card reveal';
@@ -1523,18 +1543,35 @@
       card.innerHTML = `
         <div class="project-card__image">${imageHTML}</div>
         <div class="project-card__body">
-          <p class="project-card__tag" style="color:${p.color}">${tag}</p>
+          <p class="project-card__tag" style="color:${p.color}">${tagLabel}</p>
           <h3 class="project-card__title">${title}</h3>
-          <p class="project-card__desc">${desc}</p>
-          <div class="project-card__chips" aria-label="Herramientas utilizadas">${chipsHTML}</div>
-          ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-top:20px;display:inline-flex;font-size:13px;padding:12px 24px" aria-label="Ver proyecto ${title}">${lang === 'es' ? 'Ver proyecto' : 'View project'} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>` : ''}
+          <div class="project-card__desc" style="font-size:14px;color:var(--text-muted)">${descHTML}</div>
+          <div class="project-card__chips" aria-label="Herramientas utilizadas" style="margin-top:16px">${chipsHTML}</div>
+          ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener noreferrer" class="btn-primary"
+              style="margin-top:20px;display:inline-flex;font-size:13px;padding:12px 24px"
+              aria-label="${lang === 'es' ? 'Ver proyecto' : 'View project'} ${title}">
+              ${lang === 'es' ? 'Ver prototipo' : 'View prototype'}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>` : ''}
         </div>`;
 
       grid.appendChild(card);
     });
 
-    // Activar scroll reveal en las nuevas tarjetas
     observeReveal();
+  }
+
+  // Botón leer más / cerrar
+  function toggleDesc(btn, moreLbl, lessLbl) {
+    const card      = btn.closest('.project-card__body');
+    const shortEl   = card.querySelector('.desc-short');
+    const fullEl    = card.querySelector('.desc-full');
+    const isOpen    = btn.getAttribute('aria-expanded') === 'true';
+
+    shortEl.style.display = isOpen ? 'block' : 'none';
+    fullEl.style.display  = isOpen ? 'none'  : 'block';
+    btn.setAttribute('aria-expanded', !isOpen);
+    btn.textContent = isOpen ? `${moreLbl} ↓` : `${lessLbl} ↑`;
   }
 
   /* ══════════════════════════════════════════════
