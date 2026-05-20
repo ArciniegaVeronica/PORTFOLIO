@@ -5,13 +5,13 @@
     "color": "#6366f1",
     "titleEs": "Thunder Gym",
     "titleEn": "Thunder Gym",
-    "tagEs": "UX/UI Design · Prueba Técnica Torresburriel Estudio",
-    "tagEn": "UX/UI Design · Technical Test — Torresburriel Estudio",
-    "descEs": "Prueba técnica de 72 horas para Torresburriel Estudio: diseño completo de una app móvil de gimnasio, desde la investigación y la ideación hasta el prototipo navegable de alta fidelidad. El reto exigía resolver cuatro problemas clave: visualización de horarios, inscripción a clases, consulta de vacantes en tiempo real y sistema de alertas previas a la clase.\n\nEl proceso comenzó con la definición de objetivos y un sprint de planificación para organizar las 72 horas disponibles. A continuación, realicé una investigación centrada en keywords, benchmark de apps de gimnasios reales —analizando colores, tipografías, patrones de interacción y animaciones— y análisis de tendencias actuales en diseño móvil.\n\nPara empatizar con el usuario definí una User Persona (Mariana, 22 años, estudiante y trabajadora con agenda ajustada) y un Customer Journey As-Is que reveló los puntos de mayor fricción: horarios desactualizados en pizarra, inscripción manual en recepción sin confirmación, y olvidos por falta de recordatorios. Estas fricciones se convirtieron en las oportunidades de diseño que guiaron toda la solución.\n\nUsé la técnica Crazy 8's para idear soluciones para cada uno de los cuatro problemas principales, lo que me permitió explorar distintas organizaciones visuales antes de comprometer una dirección. Una vez seleccionadas las mejores ideas, definí la identidad visual —paleta, tipografía y sistema de componentes— justificada con criterios de accesibilidad. Los wireframes evolucionaron progresivamente hasta el prototipo de alta fidelidad, al que incorporé micro-interacciones reales: cambio de estado en botones activos/inactivos, notificaciones push en el móvil y transiciones fluidas entre pantallas.",
-    "descEn": "72-hour technical test for Torresburriel Estudio: full design of a gym mobile app, from research and ideation through to a high-fidelity navigable prototype. The challenge required solving four key problems: class schedule visualization, class enrollment, real-time vacancy checking, and a pre-class alert system.\n\nThe process started with goal-setting and a planning sprint to structure the 72 hours available. I then conducted research focused on keywords, a benchmark of real gym apps —analyzing colors, typography, interaction patterns, and animations— and a current mobile design trend analysis.\n\nTo empathize with the user I defined a User Persona (Mariana, 22, a student and worker with a packed schedule) and an As-Is Customer Journey that surfaced the biggest friction points: outdated schedules on a whiteboard, manual reception enrollment with no confirmation, and forgotten classes due to lack of reminders. These frictions became the design opportunities that guided the entire solution.\n\nI used the Crazy 8's technique to ideate solutions for each of the four main problems, exploring different visual organizations before committing to a direction. Once the best ideas were selected, I defined the visual identity —palette, typography, and component system— justified with accessibility criteria. Wireframes evolved progressively into the high-fidelity prototype, enriched with real micro-interactions: active/inactive button state changes, push notifications on the phone, and smooth transitions between screens.",
+    "tagEs": "UX/UI Design · Prueba Técnica",
+    "tagEn": "UX/UI Design · Technical Test",
+    "descEs": "Prueba técnica de 72 horas para Torresburriel Estudio. Diseño completo de una app móvil de gimnasio: investigación, User Persona, Customer Journey, Crazy 8's y prototipo navegable de alta fidelidad.",
+    "descEn": "72-hour technical test for Torresburriel Estudio. Full gym mobile app design: research, User Persona, Customer Journey, Crazy 8's, and high-fidelity navigable prototype.",
     "image": "assets/thunder-gym.jpg",
-    "tags": ["Figma", "UX Research", "Crazy 8's", "Customer Journey", "Benchmark", "Wireframing", "Prototipado"],
-    "link": "https://www.figma.com/proto/4gkdp2CwIaHrMR7Mqe8P4B/VERONICA-ARCINIEGA---PRUEBA-T%C3%89CNICA-UX-DESIGN?page-id=13%3A4&node-id=129-2435&node-type=canvas&viewport=2325%2C-1902%2C0.54&scaling=scale-down&content-scaling=fixed&starting-point-node-id=129%3A2435&embed-host=share"
+    "tags": ["Figma", "UX Research", "Crazy 8's", "Customer Journey", "Wireframing", "Prototipado"],
+    "link": "thunder-gym.html"
   },
   {
     "id": "hexalud-wellness",
@@ -21,8 +21,8 @@
     "titleEn": "Hexalud Wellness",
     "tagEs": "UX/UI · Diseño Gráfico",
     "tagEn": "UX/UI · Graphic Design",
-    "descEs": "Proyecto integral para una marca de bienestar: diseño de recursos visuales, wireframes, prototipo de interfaz y banners de comunicación. Un trabajo que combina identidad gráfica y experiencia de usuario bajo una misma visión de marca.",
-    "descEn": "End-to-end project for a wellness brand: visual asset design, wireframes, UI prototype, and communication banners. A project combining graphic identity and user experience under a unified brand vision.",
+    "descEs": "Proyecto integral para una marca de bienestar: diseño de recursos visuales, wireframes, prototipo de interfaz y banners de comunicación bajo una misma visión de marca.",
+    "descEn": "End-to-end project for a wellness brand: visual asset design, wireframes, UI prototype, and communication banners under a unified brand vision.",
     "image": "assets/hexalud-wellness.jpg",
     "tags": ["Figma", "Illustrator", "Branding", "Wireframing"],
     "link": ""
@@ -34,6 +34,14 @@
     "titleEs": "Identidad Visual Artesanal",
     "titleEn": "Handcrafted Visual Identity",
     "tagEs": "Branding & Packaging",
+    "tagEn": "Branding & Packaging",
+    "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa.",
+    "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity.",
+    "image": "assets/identidad-artesanal.jpg",
+    "tags": ["Illustrator", "InDesign", "Branding", "Packaging"],
+    "link": ""
+  }
+]
     "tagEn": "Branding & Packaging",
     "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa. Paleta, tipografía, logotipo y sistema de empaque coherente con los valores naturales de la marca.",
     "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity. Palette, typography, logo, and packaging system aligned with the brand's natural values.",
