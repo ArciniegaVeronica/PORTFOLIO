@@ -9,7 +9,7 @@
     "tagEn": "UX/UI Design · Technical Test",
     "descEs": "Prueba técnica de 72 horas para Torresburriel Estudio. Diseño completo de una app móvil de gimnasio: investigación, User Persona, Customer Journey, Crazy 8's y prototipo navegable de alta fidelidad.",
     "descEn": "72-hour technical test for Torresburriel Estudio. Full gym mobile app design: research, User Persona, Customer Journey, Crazy 8's, and high-fidelity navigable prototype.",
-    "image": "assets/thunder-gym.jpg",
+    "image": "thunder-gym.png",
     "tags": ["Figma", "UX Research", "Crazy 8's", "Customer Journey", "Wireframing", "Prototipado"],
     "link": "thunder-gym.html"
   },
@@ -23,7 +23,7 @@
     "tagEn": "UX/UI · Graphic Design",
     "descEs": "Proyecto integral para una marca de bienestar: diseño de recursos visuales, wireframes, prototipo de interfaz y banners de comunicación bajo una misma visión de marca.",
     "descEn": "End-to-end project for a wellness brand: visual asset design, wireframes, UI prototype, and communication banners under a unified brand vision.",
-    "image": "assets/hexalud-wellness.jpg",
+    "image": "",
     "tags": ["Figma", "Illustrator", "Branding", "Wireframing"],
     "link": ""
   },
@@ -37,23 +37,7 @@
     "tagEn": "Branding & Packaging",
     "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa.",
     "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity.",
-    "image": "assets/identidad-artesanal.jpg",
-    "tags": ["Illustrator", "InDesign", "Branding", "Packaging"],
-    "link": ""
-  }
-]
-    "tagEn": "Branding & Packaging",
-    "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa. Paleta, tipografía, logotipo y sistema de empaque coherente con los valores naturales de la marca.",
-    "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity. Palette, typography, logo, and packaging system aligned with the brand's natural values.",
-    "image": "assets/identidad-artesanal.jpg",
-    "tags": ["Illustrator", "InDesign", "Branding", "Packaging"],
-    "link": ""
-  }
-]
-    "tagEn": "Branding & Packaging",
-    "descEs": "Creación de marca y empaque para una línea de productos orgánicos, desde el naming hasta la identidad visual completa. Paleta, tipografía, logotipo y sistema de empaque coherente con los valores naturales de la marca.",
-    "descEn": "Brand and packaging creation for an organic product line, from naming to full visual identity. Palette, typography, logo, and packaging system aligned with the brand's natural values.",
-    "image": "assets/identidad-artesanal.jpg",
+    "image": "",
     "tags": ["Illustrator", "InDesign", "Branding", "Packaging"],
     "link": ""
   }
