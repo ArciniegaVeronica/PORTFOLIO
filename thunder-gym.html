@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thunder Gym — Verónica Arciniega</title>
-  <meta name="description" content="Caso de estudio completo de Thunder Gym: prueba técnica UX/UI de 72 horas para Torresburriel Estudio. Proceso completo desde investigación hasta prototipo de alta fidelidad.">
+  <meta name="description" content="Caso de estudio completo de Thunder Gym: prueba técnica UX/UI de 72 horas. Proceso completo desde investigación hasta prototipo de alta fidelidad.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -34,6 +34,1012 @@
     [data-theme="light"] {
       --bg:         #f8f8fc;
       --surface:    #ffffff;
+      --card:       #ffffff;
+      --card-soft:  #f0f0f8;
+      --text:       #0a0a0f;
+      --text-muted: rgba(10,10,15,0.55);
+      --text-faint: rgba(10,10,15,0.25);
+      --primary:    #4f46e5;
+      --secondary:  #db2777;
+      --tiffany:    #0899A5;
+      --border:     rgba(0,0,0,0.07);
+      --border-mid: rgba(0,0,0,0.12);
+      --tag-bg:     rgba(0,0,0,0.04);
+      --tag-text:   rgba(0,0,0,0.55);
+      --shadow:     0 20px 60px rgba(0,0,0,0.1);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a   { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+
+    /* ─── SKIP LINK ─── */
+    .skip-link {
+      position: fixed; top: -100px; left: 16px; z-index: 9999;
+      padding: 12px 20px; background: var(--primary); color: #fff;
+      border-radius: 8px; font-weight: 700; font-size: 14px; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 16px; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 68px;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      transition: background var(--transition);
+    }
+    .nav__inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 24px;
+      height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    @media (min-width: 768px) { .nav__inner { padding: 0 48px; } }
+
+    .nav__back {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 700;
+      color: var(--text-muted); transition: color var(--transition);
+    }
+    .nav__back:hover { color: var(--text); }
+    .nav__back svg { width: 16px; height: 16px; transition: transform var(--transition); }
+    .nav__back:hover svg { transform: translateX(-3px); }
+
+    .nav__right { display: flex; align-items: center; gap: 12px; }
+
+    .lang-btn {
+      color: var(--text-faint); font-weight: 700; font-family: var(--font-mono);
+      font-size: 11px; background: none; border: none; cursor: pointer;
+      padding: 4px 2px; transition: color var(--transition);
+    }
+    .lang-btn[aria-pressed="true"] { color: var(--primary); }
+    .lang-btn:hover { color: var(--text); }
+    .lang-sep { color: var(--text-faint); font-size: 11px; }
+
+    .theme-toggle {
+      width: 36px; height: 36px; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border-mid); color: var(--text-muted);
+      transition: background var(--transition), transform 0.4s;
+    }
+    .theme-toggle:hover { background: var(--surface); color: var(--text); transform: rotate(20deg); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+    .container--wide { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 768px) { .container--wide { padding: 0 48px; } }
+
+    /* ─── HERO DEL PROYECTO ─── */
+    .project-hero {
+      padding-top: 68px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .project-hero__inner {
+      max-width: 900px; margin: 0 auto; padding: 72px 24px 64px;
+    }
+    @media (min-width: 768px) { .project-hero__inner { padding: 80px 48px 72px; } }
+
+    .label {
+      font-family: var(--font-mono); font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--primary); font-weight: 700;
+    }
+
+    .project-hero__title {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 0.95;
+      margin: 16px 0 24px;
+    }
+
+    .project-hero__subtitle {
+      font-size: clamp(17px, 2vw, 21px);
+      color: var(--text-muted); max-width: 640px; line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--border);
+    }
+    @media (min-width: 640px) { .meta-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .meta-item {
+      background: var(--card); padding: 20px 24px;
+    }
+    .meta-item__label {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-faint); font-weight: 700; margin-bottom: 6px;
+    }
+    .meta-item__value {
+      font-size: 14px; font-weight: 700; color: var(--text);
+    }
+
+    /* ─── COVER IMAGE ─── */
+    .cover-image {
+      background: var(--card-soft);
+      border-bottom: 1px solid var(--border);
+    }
+    .cover-image img { width: 100%; max-height: 540px; object-fit: cover; }
+    .cover-image__placeholder {
+      aspect-ratio: 16/7;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--card-soft) 0%, var(--card) 100%);
+    }
+    .cover-image__placeholder svg { opacity: 0.08; }
+
+    /* ─── CONTENIDO DEL CASO ─── */
+    .case-content { padding: 80px 0; }
+
+    /* Sección de proceso */
+    .process-section { margin-bottom: 80px; }
+    .process-section:last-child { margin-bottom: 0; }
+
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+    }
+    .section-num {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--text-faint); letter-spacing: 0.1em;
+    }
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    .process-section h2 {
+      font-size: clamp(26px, 4vw, 36px); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 20px;
+    }
+
+    .prose {
+      font-size: 16px; color: var(--text-muted); line-height: 1.8; max-width: 720px;
+    }
+    .prose p { margin-bottom: 16px; }
+    .prose p:last-child { margin-bottom: 0; }
+    .prose strong { color: var(--text); font-weight: 700; }
+
+    /* Keywords pills */
+    .keywords {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px;
+    }
+    .keyword {
+      padding: 8px 16px; border-radius: 9999px;
+      border: 1px solid var(--border-mid); background: var(--tag-bg);
+      font-family: var(--font-mono); font-size: 11px; color: var(--tag-text);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      transition: all 0.3s ease;
+    }
+    .keyword:hover { background: var(--text); color: var(--bg); border-color: transparent; }
+
+    /* Imagen con caption */
+    .figure {
+      margin: 40px 0; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .figure img { width: 100%; display: block; }
+    .figure figcaption {
+      padding: 14px 20px; background: var(--surface);
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* Imagen placeholder con texto */
+    .figure-placeholder {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden; margin: 40px 0;
+    }
+    .figure-placeholder__inner {
+      aspect-ratio: 16/7; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      opacity: 0.3;
+    }
+    .figure-placeholder__label {
+      font-family: var(--font-mono); font-size: 11px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+    }
+    .figure-placeholder figcaption {
+      padding: 14px 20px; border-top: 1px solid var(--border);
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--text-faint); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* Grid 2 columnas para imágenes */
+    .img-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 40px 0;
+    }
+    @media (max-width: 640px) { .img-grid { grid-template-columns: 1fr; } }
+
+    .img-grid .figure, .img-grid .figure-placeholder { margin: 0; }
+
+    /* Divider */
+    hr.divider {
+      border: none; border-top: 1px solid var(--border); margin: 72px 0;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--surface); border: 1px solid var(--border-mid);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px; padding: 24px 28px; margin: 32px 0;
+    }
+    .highlight-box p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.7;
+      font-style: italic;
+    }
+    .highlight-box strong { color: var(--primary); }
+
+    /* Pain points grid */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px; margin-top: 28px;
+    }
+    .pain-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px;
+    }
+    .pain-card__emoji { font-size: 24px; margin-bottom: 10px; }
+    .pain-card__phase {
+      font-family: var(--font-mono); font-size: 9px;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--tiffany); font-weight: 700; margin-bottom: 6px;
+    }
+    .pain-card__title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .pain-card__desc  { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .pain-card__opp {
+      margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--primary); font-weight: 600;
+    }
+
+    /* Process steps (Crazy 8's) */
+    .steps { display: flex; flex-direction: column; gap: 20px; margin-top: 28px; }
+    .step {
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .step__num {
+      flex-shrink: 0; width: 36px; height: 36px;
+      border-radius: 50%; background: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: #fff;
+    }
+    .step__content { flex: 1; }
+    .step__title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .step__desc  { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* Prototype embed */
+    .prototype-embed {
+      margin: 40px 0; border-radius: 20px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--card-soft);
+    }
+    .prototype-embed iframe {
+      width: 100%; border: none; display: block;
+    }
+    .prototype-fallback {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 16px; padding: 60px 24px; text-align: center;
+    }
+    .prototype-fallback p { font-size: 15px; color: var(--text-muted); }
+
+    /* CTA final */
+    .case-cta {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 80px 0;
+    }
+    .case-cta__inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start;
+    }
+    @media (min-width: 768px) {
+      .case-cta__inner { flex-direction: row; align-items: center; justify-content: space-between; padding: 0 48px; }
+    }
+    .case-cta h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.03em; }
+    .case-cta p  { font-size: 16px; color: var(--text-muted); margin-top: 8px; max-width: 400px; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border-radius: 9999px;
+      background: var(--primary); color: #fff; font-weight: 700; font-size: 14px;
+      white-space: nowrap;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(99,102,241,0.45);
+    }
+    .btn-primary svg { width: 16px; height: 16px; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 32px; border-radius: 9999px;
+      border: 1px solid var(--border-mid); color: var(--text);
+      font-weight: 700; font-size: 14px; white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+    /* Footer */
+    footer {
+      padding: 32px 24px; border-top: 1px solid var(--border);
+      text-align: center; font-family: var(--font-mono); font-size: 10px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-faint);
+    }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link" data-t="skip">Saltar al contenido</a>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Navegación del caso de estudio">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__back" aria-label="Volver al portfolio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span data-t="back">Volver al portfolio</span>
+    </a>
+    <div class="nav__right">
+      <div role="group" aria-label="Cambiar idioma" style="display:flex;align-items:center;gap:6px">
+        <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-pressed="true" aria-label="Español">ES</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false" aria-label="English">EN</button>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg id="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display:none"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364-.707.707M6.343 17.657l-.707.707m12.728 0-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- HERO -->
+  <header class="project-hero">
+    <div class="project-hero__inner">
+      <p class="label" data-t="tag">UX/UI Design · Prueba Técnica</p>
+      <h1 class="project-hero__title">Thunder Gym</h1>
+      <p class="project-hero__subtitle" data-t="subtitle">
+        Diseño completo de una app móvil de gimnasio en 72 horas: desde la investigación y la ideación hasta el prototipo navegable de alta fidelidad.
+      </p>
+      <div class="meta-grid" role="list" aria-label="Detalles del proyecto">
+        <div class="meta-item" role="listitem">
+          <p class="meta-item__label" data-t="meta_type">Tipo</p>
+          <p class="meta-item__value" data-t="meta_type_val">Prueba Técnica</p>
+        </div>
+        <div class="meta-item" role="listitem">
+          <p class="meta-item__label" data-t="meta_role">Rol</p>
+          <p class="meta-item__value" data-t="meta_role_val">UX/UI Designer</p>
+        </div>
+        <div class="meta-item" role="listitem">
+          <p class="meta-item__label" data-t="meta_time">Tiempo</p>
+          <p class="meta-item__value">72 horas</p>
+        </div>
+        <div class="meta-item" role="listitem">
+          <p class="meta-item__label" data-t="meta_tools">Herramientas</p>
+          <p class="meta-item__value">Figma</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- COVER -->
+  <div class="cover-image">
+    <img src="thunder_gym_principal.jpg" alt="Pantallas del prototipo de Thunder Gym" loading="eager"
+         onerror="this.parentElement.innerHTML='<div class=\'cover-image__placeholder\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'0.5\'><rect x=\'2\' y=\'3\' width=\'20\' height=\'14\' rx=\'2\'/><path d=\'M8 21h8M12 17v4\'/></svg></div>'">
+  </div>
+
+  <!-- CONTENIDO -->
+  <article class="case-content" aria-label="Caso de estudio completo">
+  <div class="container">
+
+    <!-- 01 — CONTEXTO -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">01</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s1_label">El reto</span>
+      </div>
+      <h2 data-t="s1_title">Contexto y restricciones</h2>
+      <div class="prose">
+        <p data-t="s1_p1">El reto consistía en diseñar una <strong>app móvil para un gimnasio</strong> que permitiera a sus usuarios visualizar horarios de clases (Kickboxing, Zumba y Spinning), inscribirse, consultar vacantes disponibles y recibir alertas antes de cada clase.</p>
+        <p data-t="s1_p2">El entregable era un <strong>prototipo navegable de alta fidelidad con al menos 4 pantallas</strong>, junto con el proceso completo de ideación documentado en Figma. El tiempo máximo: <strong>72 horas desde la recepción del brief</strong>.</p>
+        <p data-t="s1_p3">Antes de diseñar nada, estructuré un sprint de planificación para organizar las 72 horas de forma eficiente: qué investigar, cuándo idear, cuándo ejecutar y cuánto tiempo dejar para el refinamiento del prototipo.</p>
+      </div>
+
+      <div class="highlight-box" aria-label="Brief del proyecto">
+        <p data-t="s1_quote">"Los usuarios de un gimnasio necesitan una aplicación con la que poder <strong>visualizar horarios</strong>, poder <strong>inscribirse</strong>, ver las <strong>vacantes disponibles</strong> y que les salten <strong>alertas de aviso</strong> antes de la clase, entre otras posibilidades."</p>
+      </div>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 02 — INVESTIGACIÓN -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">02</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s2_label">Investigación</span>
+      </div>
+      <h2 data-t="s2_title">Keywords, benchmark y tendencias</h2>
+      <div class="prose">
+        <p data-t="s2_p1">Aunque el brief ya definía las necesidades a cubrir, quería tomar decisiones de diseño basadas en contexto real. Empecé mapeando las <strong>palabras clave</strong> que definirían el proyecto para asegurarme de que la dirección conceptual fuera coherente.</p>
+      </div>
+
+      <div class="keywords" aria-label="Keywords del proyecto" role="list">
+        <span class="keyword" role="listitem">Gimnasio</span>
+        <span class="keyword" role="listitem">App móvil</span>
+        <span class="keyword" role="listitem">Visualizar horarios</span>
+        <span class="keyword" role="listitem">Inscripción</span>
+        <span class="keyword" role="listitem">Vacantes</span>
+        <span class="keyword" role="listitem">Alertas</span>
+        <span class="keyword" role="listitem">Ejercicio de ideación</span>
+        <span class="keyword" role="listitem">Prototipo navegable</span>
+        <span class="keyword" role="listitem">Alta fidelidad</span>
+      </div>
+
+      <div class="prose" style="margin-top:28px">
+        <p data-t="s2_p2">A continuación realicé un <strong>benchmark de apps reales de gimnasios</strong>, analizando colores, tipografías, patrones de interacción clave, uso de animaciones y jerarquía de información. Este análisis me permitió identificar qué funciona bien en el mercado actual y qué oportunidades de diferenciación existían para Thunder Gym.</p>
+      </div>
+
+      <figure class="figure-placeholder" aria-label="Benchmark de apps de gimnasios">
+        <div class="figure-placeholder__inner">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          <span class="figure-placeholder__label" data-t="placeholder_benchmark">Añade aquí tu captura del benchmark</span>
+        </div>
+        <figcaption data-t="fig_benchmark">Benchmark — análisis de apps de gimnasios reales</figcaption>
+      </figure>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 03 — USER PERSONA -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">03</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s3_label">Empatía</span>
+      </div>
+      <h2 data-t="s3_title">User Persona</h2>
+      <div class="prose">
+        <p data-t="s3_p1">Para empatizar con el usuario real de la app, definí una <strong>User Persona</strong> que representara al perfil más común del gimnasio: alguien con agenda apretada que necesita organizar sus clases sin fricciones.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/thunder-gym-persona.jpg" alt="User Persona — Mariana Nava, 22 años, estudiante y trabajadora en Zaragoza"
+             loading="lazy"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <div style="display:none; padding:60px 24px; text-align:center; background:var(--card);">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.1em" data-t="placeholder_persona">Añade aquí tu captura del User Persona</p>
+        </div>
+        <figcaption data-t="fig_persona">User Persona — Mariana Nava · Estudiante y trabajadora · Zaragoza</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p data-t="s3_p2"><strong>Mariana, 22 años</strong>, estudia por las mañanas, trabaja por las tardes y va al gimnasio por la noche. Planifica su día meticulosamente para cumplir sus responsabilidades sin sacrificar el entrenamiento, pero reconoce que a veces olvida las clases a las que se ha apuntado. Su nivel de uso del móvil es alto y espera de la app la misma eficiencia que exige a su propia agenda.</p>
+      </div>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 04 — CUSTOMER JOURNEY -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">04</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s4_label">Análisis</span>
+      </div>
+      <h2 data-t="s4_title">Customer Journey — As Is</h2>
+      <div class="prose">
+        <p data-t="s4_p1">Antes de diseñar la solución, mapeé el <strong>Customer Journey actual</strong> de Mariana —sin la app— para visualizar cómo se siente en cada etapa del proceso de reserva de una clase. Esto me permitió sustentar con evidencia real las necesidades del brief y descubrir las verdaderas oportunidades de diseño.</p>
+      </div>
+
+      <figure class="figure">
+        <img src="assets/thunder-gym-journey.jpg" alt="Customer Journey As-Is de Mariana al reservar una clase en el gimnasio"
+             loading="lazy"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <div style="display:none; padding:60px 24px; text-align:center; background:var(--card);">
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.1em" data-t="placeholder_journey">Añade aquí tu captura del Customer Journey</p>
+        </div>
+        <figcaption data-t="fig_journey">Customer Journey As-Is · Escenario: reservar una clase grupal</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p data-t="s4_p2">El journey reveló <strong>6 fases con puntos de dolor claros</strong> que se convirtieron en las oportunidades de diseño que guiaron toda la solución:</p>
+      </div>
+
+      <div class="pain-grid" role="list" aria-label="Puntos de dolor identificados">
+        <div class="pain-card" role="listitem">
+          <div class="pain-card__emoji" aria-hidden="true">😤</div>
+          <p class="pain-card__phase" data-t="pain1_phase">Busca horarios</p>
+          <p class="pain-card__title" data-t="pain1_title">Información desactualizada</p>
+          <p class="pain-card__desc" data-t="pain1_desc">Tiene que revisar la pizarra del gimnasio, que no siempre está al día.</p>
+          <p class="pain-card__opp" data-t="pain1_opp">→ Horarios en tiempo real dentro de la app</p>
+        </div>
+        <div class="pain-card" role="listitem">
+          <div class="pain-card__emoji" aria-hidden="true">😰</div>
+          <p class="pain-card__phase" data-t="pain2_phase">Verificar vacantes</p>
+          <p class="pain-card__title" data-t="pain2_title">Incertidumbre sobre disponibilidad</p>
+          <p class="pain-card__desc" data-t="pain2_desc">No sabe si habrá hueco o si tendrá que cambiar de clase en el último momento.</p>
+          <p class="pain-card__opp" data-t="pain2_opp">→ Visualización de vacantes en tiempo real</p>
+        </div>
+        <div class="pain-card" role="listitem">
+          <div class="pain-card__emoji" aria-hidden="true">😵</div>
+          <p class="pain-card__phase" data-t="pain3_phase">Inscripción</p>
+          <p class="pain-card__title" data-t="pain3_title">Proceso manual sin confirmación</p>
+          <p class="pain-card__desc" data-t="pain3_desc">Se apunta en recepción y no recibe ninguna confirmación clara de si quedó inscrita.</p>
+          <p class="pain-card__opp" data-t="pain3_opp">→ Inscripción digital con confirmación inmediata</p>
+        </div>
+        <div class="pain-card" role="listitem">
+          <div class="pain-card__emoji" aria-hidden="true">😟</div>
+          <p class="pain-card__phase" data-t="pain4_phase">Recordatorio</p>
+          <p class="pain-card__title" data-t="pain4_title">Olvida las clases</p>
+          <p class="pain-card__desc" data-t="pain4_desc">Toma nota en un papel o post-it. A veces simplemente se le olvida.</p>
+          <p class="pain-card__opp" data-t="pain4_opp">→ Sistema de alertas push antes de la clase</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 05 — IDEACIÓN CRAZY 8'S -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">05</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s5_label">Ideación</span>
+      </div>
+      <h2 data-t="s5_title">Crazy 8's</h2>
+      <div class="prose">
+        <p data-t="s5_p1">Para el ejercicio de ideación elegí la técnica <strong>Crazy 8's</strong> por su versatilidad y porque se adapta perfectamente a las restricciones de tiempo de la prueba. Aplicándola a cada uno de los <strong>4 problemas principales</strong> del journey pude explorar 8 soluciones diferentes para cada uno antes de comprometer una dirección.</p>
+        <p data-t="s5_p2">Este proceso me permitió identificar qué <strong>organización visual</strong> facilitaría mejor al usuario cubrir sus necesidades en cada flujo, y tomar decisiones informadas sobre jerarquía, navegación y componentes antes de pasar al wireframe.</p>
+      </div>
+
+      <figure class="figure-placeholder" aria-label="Ejercicio Crazy 8's">
+        <div class="figure-placeholder__inner">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span class="figure-placeholder__label" data-t="placeholder_crazy8">Añade aquí tu captura del Crazy 8's</span>
+        </div>
+        <figcaption data-t="fig_crazy8">Crazy 8's — ideación aplicada a los 4 problemas principales</figcaption>
+      </figure>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 06 — IDENTIDAD VISUAL -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">06</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s6_label">Visual Design</span>
+      </div>
+      <h2 data-t="s6_title">Identidad visual y accesibilidad</h2>
+      <div class="prose">
+        <p data-t="s6_p1">Con la dirección de diseño definida, establecí la <strong>identidad visual de Thunder Gym</strong>: paleta de color, tipografía y sistema de componentes. Todas las decisiones se justificaron con criterios de accesibilidad —contrastes mínimos WCAG AA, tamaños de texto legibles, áreas de toque suficientes para móvil.</p>
+        <p data-t="s6_p2">Los wireframes evolucionaron de forma progresiva: primero estructuras básicas de navegación, luego incorporación de la identidad visual, y finalmente refinamiento hacia el prototipo de alta fidelidad.</p>
+      </div>
+
+      <div class="img-grid" aria-label="Wireframes y diseño visual">
+        <figure class="figure-placeholder">
+          <div class="figure-placeholder__inner" style="aspect-ratio:9/16">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+            <span class="figure-placeholder__label" style="font-size:9px" data-t="placeholder_wire">Wireframes</span>
+          </div>
+          <figcaption data-t="fig_wire">Wireframes — baja fidelidad</figcaption>
+        </figure>
+        <figure class="figure-placeholder">
+          <div class="figure-placeholder__inner" style="aspect-ratio:9/16">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+            <span class="figure-placeholder__label" style="font-size:9px" data-t="placeholder_styles">Guía de estilos</span>
+          </div>
+          <figcaption data-t="fig_styles">Sistema visual — colores y tipografía</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 07 — PROTOTIPO -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">07</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s7_label">Resultado</span>
+      </div>
+      <h2 data-t="s7_title">Prototipo de alta fidelidad</h2>
+      <div class="prose">
+        <p data-t="s7_p1">El prototipo final es <strong>navegable e interactivo</strong>, con micro-interacciones que transmiten un funcionamiento real de la app: cambio de estado en botones activos/inactivos, notificaciones push visibles en el móvil, y transiciones fluidas entre pantallas que simulan el comportamiento nativo de iOS.</p>
+      </div>
+
+      <!-- Embed del prototipo de Figma -->
+      <div class="prototype-embed" aria-label="Prototipo interactivo de Thunder Gym en Figma">
+        <iframe
+          src="https://embed.figma.com/proto/4gkdp2CwIaHrMR7Mqe8P4B/VERONICA-ARCINIEGA---PRUEBA-T%C3%89CNICA-UX-DESIGN?page-id=13%3A4&node-id=129-2435&node-type=canvas&viewport=2325%2C-1902%2C0.54&scaling=scale-down&content-scaling=fixed&starting-point-node-id=129%3A2435&embed-host=share"
+          height="700"
+          allowfullscreen
+          loading="lazy"
+          title="Prototipo interactivo Thunder Gym — Figma"
+        ></iframe>
+      </div>
+
+      <div class="prose" style="margin-top:28px">
+        <p data-t="s7_p2">Los cuatro flujos principales cubiertos en el prototipo corresponden directamente a los cuatro puntos de dolor identificados en el Customer Journey: <strong>consulta de horarios, verificación de vacantes, inscripción digital y gestión de alertas</strong>.</p>
+      </div>
+
+      <div style="margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://www.figma.com/proto/4gkdp2CwIaHrMR7Mqe8P4B/VERONICA-ARCINIEGA---PRUEBA-T%C3%89CNICA-UX-DESIGN?page-id=13%3A4&node-id=129-2435&node-type=canvas&viewport=2325%2C-1902%2C0.54&scaling=scale-down&content-scaling=fixed&starting-point-node-id=129%3A2435&embed-host=share"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-primary" data-t="btn_figma">
+          Ver en Figma
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+        <a href="index.html" class="btn-outline" data-t="btn_back_portfolio">← Volver al portfolio</a>
+      </div>
+    </div>
+
+    <hr class="divider" aria-hidden="true">
+
+    <!-- 08 — PANTALLAS POR FLUJO -->
+    <div class="process-section reveal">
+      <div class="section-eyebrow">
+        <span class="section-num">08</span>
+        <div class="section-line" aria-hidden="true"></div>
+        <span class="label" data-t="s8_label">Pantallas</span>
+      </div>
+      <h2 data-t="s8_title">Flujos diseñados</h2>
+      <div class="prose">
+        <p data-t="s8_intro">Cada flujo resuelve directamente uno de los cuatro puntos de dolor identificados en el Customer Journey. Las pantallas no son decorativas — cada decisión visual responde a una necesidad real del usuario.</p>
+      </div>
+
+      <!-- FLUJO 1: Onboarding + Inicio -->
+      <div style="margin-top:48px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--tiffany);text-transform:uppercase;letter-spacing:0.12em" data-t="flow1_tag">Flujo 01</span>
+          <div style="flex:1;height:1px;background:var(--border)"></div>
+        </div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px" data-t="flow1_title">Entrada a la app e inicio personalizado</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.65;max-width:640px;margin-bottom:28px" data-t="flow1_desc">Splash de marca + pantalla de inicio con resumen del día, próximas reservas y acceso rápido a clases favoritas. El usuario entiende de un vistazo qué tiene pendiente sin necesidad de navegar.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-splash.jpg" alt="Pantalla Splash de Thunder Gym" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_splash">Splash</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_splash">Splash</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-inicio.jpg" alt="Pantalla de inicio de Thunder Gym" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_home">Inicio</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_home">Inicio</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-inicio-reservas.jpg" alt="Inicio con reservas activas" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_home_r">Inicio con reservas</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_home_r">Inicio con reservas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- FLUJO 2: Horarios y vacantes -->
+      <div style="margin-top:56px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.12em" data-t="flow2_tag">Flujo 02</span>
+          <div style="flex:1;height:1px;background:var(--border)"></div>
+        </div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px" data-t="flow2_title">Horarios y vacantes en tiempo real</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.65;max-width:640px;margin-bottom:28px" data-t="flow2_desc">Visualización de clases con filtros por turno (Mañana / Tarde / Noche) y contador de vacantes visible directamente en la lista. Elimina la necesidad de preguntar en recepción o consultar una pizarra desactualizada.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-horarios-1.jpg" alt="Pantalla de horarios de clases" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_schedule">Horarios</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_schedule">Horarios</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-horarios-2.jpg" alt="Horarios con filtro de turno" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_schedule_f">Horarios filtrados</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_schedule_f">Horarios filtrados</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- FLUJO 3: Reserva e inscripción -->
+      <div style="margin-top:56px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--secondary);text-transform:uppercase;letter-spacing:0.12em" data-t="flow3_tag">Flujo 03</span>
+          <div style="flex:1;height:1px;background:var(--border)"></div>
+        </div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px" data-t="flow3_title">Inscripción digital con confirmación inmediata</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.65;max-width:640px;margin-bottom:28px" data-t="flow3_desc">Modal de confirmación antes de reservar, pantalla de éxito con datos de la reserva y opción de añadir al calendario. La pantalla de cancelación usa el mismo patrón visual para mantener coherencia sin sorpresas.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-noti-app.jpg" alt="Modal de confirmación de reserva" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_modal">Modal reserva</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_modal">Modal reserva</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-confirmada.jpg" alt="Reserva confirmada" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_confirmed">Reserva confirmada</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_confirmed">Reserva confirmada</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-cancelada.jpg" alt="Reserva cancelada" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_cancelled">Reserva cancelada</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_cancelled">Reserva cancelada</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- FLUJO 4: Alertas y notificaciones -->
+      <div style="margin-top:56px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+          <span style="font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--tiffany);text-transform:uppercase;letter-spacing:0.12em" data-t="flow4_tag">Flujo 04</span>
+          <div style="flex:1;height:1px;background:var(--border)"></div>
+        </div>
+        <h3 style="font-size:20px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px" data-t="flow4_title">Sistema de alertas y mis reservas</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.65;max-width:640px;margin-bottom:28px" data-t="flow4_desc">Notificaciones push del sistema antes de cada clase y vista de "Mis reservas" con gestión completa. El usuario ya no necesita recordarlo: la app lo hace por él.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px">
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-noti-sistema.jpg" alt="Notificación push del sistema" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_notif">Notificación push</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_notif">Notificación push</figcaption>
+          </figure>
+          <figure style="margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card-soft)">
+            <img src="assets/tg-mis-reservas.jpg" alt="Vista Mis Reservas" loading="lazy" style="width:100%;display:block"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div style="display:none;aspect-ratio:9/16;align-items:center;justify-content:center;flex-direction:column;gap:8px;opacity:0.3;padding:16px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              <span style="font-family:var(--font-mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;text-align:center" data-t="screen_bookings">Mis reservas</span>
+            </div>
+            <figcaption style="padding:10px 14px;font-family:var(--font-mono);font-size:9px;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;border-top:1px solid var(--border)" data-t="screen_bookings">Mis reservas</figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  </article>
+
+  <!-- CTA FINAL -->
+  <div class="case-cta">
+    <div class="case-cta__inner">
+      <div>
+        <h2 data-t="cta_title">¿Trabajamos juntos?</h2>
+        <p data-t="cta_desc">Si este proyecto te ha dado una idea de cómo trabajo, me encantaría contarte más.</p>
+      </div>
+      <a href="index.html#contact" class="btn-primary" data-t="cta_btn">
+        Contactar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer role="contentinfo">
+  <p>© 2026 Verónica Arciniega — <span data-t="footer">Diseñadora Multidisciplinar</span></p>
+</footer>
+
+<script>
+  /* ── TRADUCCIONES ── */
+  const t = {
+    es: {
+      skip: "Saltar al contenido",
+      back: "Volver al portfolio",
+      tag: "UX/UI Design · Prueba Técnica",
+      subtitle: "Diseño completo de una app móvil de gimnasio en 72 horas: desde la investigación y la ideación hasta el prototipo navegable de alta fidelidad.",
+      meta_type: "Tipo", meta_type_val: "Prueba Técnica",
+      meta_role: "Rol", meta_role_val: "UX/UI Designer",
+      meta_time: "Tiempo", meta_tools: "Herramientas",
+      s1_label: "El reto", s1_title: "Contexto y restricciones",
+      s1_p1: "El reto consistía en diseñar una app móvil para un gimnasio que permitiera a sus usuarios visualizar horarios de clases (Kickboxing, Zumba y Spinning), inscribirse, consultar vacantes disponibles y recibir alertas antes de cada clase.",
+      s1_p2: "El entregable era un prototipo navegable de alta fidelidad con al menos 4 pantallas, junto con el proceso completo de ideación documentado en Figma. El tiempo máximo: 72 horas desde la recepción del brief.",
+      s1_p3: "Antes de diseñar nada, estructuré un sprint de planificación para organizar las 72 horas de forma eficiente: qué investigar, cuándo idear, cuándo ejecutar y cuánto tiempo dejar para el refinamiento del prototipo.",
+      s1_quote: '"Los usuarios de un gimnasio necesitan una aplicación con la que poder visualizar horarios, poder inscribirse, ver las vacantes disponibles y que les salten alertas de aviso antes de la clase, entre otras posibilidades."',
+      s2_label: "Investigación", s2_title: "Keywords, benchmark y tendencias",
+      s2_p1: "Aunque el brief ya definía las necesidades a cubrir, quería tomar decisiones de diseño basadas en contexto real. Empecé mapeando las palabras clave que definirían el proyecto para asegurarme de que la dirección conceptual fuera coherente.",
+      s2_p2: "A continuación realicé un benchmark de apps reales de gimnasios, analizando colores, tipografías, patrones de interacción clave, uso de animaciones y jerarquía de información. Este análisis me permitió identificar qué funciona bien en el mercado actual y qué oportunidades de diferenciación existían.",
+      placeholder_benchmark: "Añade aquí tu captura del benchmark",
+      fig_benchmark: "Benchmark — análisis de apps de gimnasios reales",
+      s3_label: "Empatía", s3_title: "User Persona",
+      s3_p1: "Para empatizar con el usuario real de la app, definí una User Persona que representara al perfil más común del gimnasio: alguien con agenda apretada que necesita organizar sus clases sin fricciones.",
+      s3_p2: "Mariana, 22 años, estudia por las mañanas, trabaja por las tardes y va al gimnasio por la noche. Planifica su día meticulosamente pero reconoce que a veces olvida las clases a las que se ha apuntado. Su nivel de uso del móvil es alto y espera de la app la misma eficiencia que exige a su propia agenda.",
+      placeholder_persona: "Añade aquí tu captura del User Persona",
+      fig_persona: "User Persona — Mariana Nava · Estudiante y trabajadora · Zaragoza",
+      s4_label: "Análisis", s4_title: "Customer Journey — As Is",
+      s4_p1: "Antes de diseñar la solución, mapeé el Customer Journey actual de Mariana —sin la app— para visualizar cómo se siente en cada etapa del proceso de reserva de una clase. Esto me permitió sustentar con evidencia real las necesidades del brief y descubrir las verdaderas oportunidades de diseño.",
+      s4_p2: "El journey reveló 6 fases con puntos de dolor claros que se convirtieron en las oportunidades de diseño que guiaron toda la solución:",
+      placeholder_journey: "Añade aquí tu captura del Customer Journey",
+      fig_journey: "Customer Journey As-Is · Escenario: reservar una clase grupal",
+      pain1_phase:"Busca horarios", pain1_title:"Información desactualizada", pain1_desc:"Tiene que revisar la pizarra del gimnasio, que no siempre está al día.", pain1_opp:"→ Horarios en tiempo real dentro de la app",
+      pain2_phase:"Verificar vacantes", pain2_title:"Incertidumbre sobre disponibilidad", pain2_desc:"No sabe si habrá hueco o si tendrá que cambiar de clase en el último momento.", pain2_opp:"→ Visualización de vacantes en tiempo real",
+      pain3_phase:"Inscripción", pain3_title:"Proceso manual sin confirmación", pain3_desc:"Se apunta en recepción y no recibe ninguna confirmación clara de si quedó inscrita.", pain3_opp:"→ Inscripción digital con confirmación inmediata",
+      pain4_phase:"Recordatorio", pain4_title:"Olvida las clases", pain4_desc:"Toma nota en un papel o post-it. A veces simplemente se le olvida.", pain4_opp:"→ Sistema de alertas push antes de la clase",
+      s5_label:"Ideación", s5_title:"Crazy 8's",
+      s5_p1:"Para el ejercicio de ideación elegí la técnica Crazy 8's por su versatilidad y porque se adapta perfectamente a las restricciones de tiempo. Aplicándola a cada uno de los 4 problemas principales del journey pude explorar 8 soluciones diferentes para cada uno antes de comprometer una dirección.",
+      s5_p2:"Este proceso me permitió identificar qué organización visual facilitaría mejor al usuario cubrir sus necesidades en cada flujo, y tomar decisiones informadas sobre jerarquía, navegación y componentes antes de pasar al wireframe.",
+      placeholder_crazy8:"Añade aquí tu captura del Crazy 8's",
+      fig_crazy8:"Crazy 8's — ideación aplicada a los 4 problemas principales",
+      s6_label:"Visual Design", s6_title:"Identidad visual y accesibilidad",
+      s6_p1:"Con la dirección de diseño definida, establecí la identidad visual de Thunder Gym: paleta de color, tipografía y sistema de componentes. Todas las decisiones se justificaron con criterios de accesibilidad —contrastes mínimos WCAG AA, tamaños de texto legibles, áreas de toque suficientes para móvil.",
+      s6_p2:"Los wireframes evolucionaron de forma progresiva: primero estructuras básicas de navegación, luego incorporación de la identidad visual, y finalmente refinamiento hacia el prototipo de alta fidelidad.",
+      placeholder_wire:"Wireframes", placeholder_styles:"Guía de estilos",
+      fig_wire:"Wireframes — baja fidelidad", fig_styles:"Sistema visual — colores y tipografía",
+      s7_label:"Resultado", s7_title:"Prototipo de alta fidelidad",
+      s7_p1:"El prototipo final es navegable e interactivo, con micro-interacciones que transmiten un funcionamiento real de la app: cambio de estado en botones activos/inactivos, notificaciones push visibles en el móvil, y transiciones fluidas entre pantallas.",
+      s7_p2:"Los cuatro flujos principales corresponden directamente a los cuatro puntos de dolor identificados en el Customer Journey: consulta de horarios, verificación de vacantes, inscripción digital y gestión de alertas.",
+      btn_figma:"Ver en Figma", btn_back_portfolio:"← Volver al portfolio",
+      s8_label:"Pantallas", s8_title:"Flujos diseñados",
+      s8_intro:"Cada flujo resuelve directamente uno de los cuatro puntos de dolor identificados en el Customer Journey. Las pantallas no son decorativas — cada decisión visual responde a una necesidad real del usuario.",
+      flow1_tag:"Flujo 01", flow1_title:"Entrada a la app e inicio personalizado",
+      flow1_desc:"Splash de marca + pantalla de inicio con resumen del día, próximas reservas y acceso rápido a clases favoritas. El usuario entiende de un vistazo qué tiene pendiente sin necesidad de navegar.",
+      flow2_tag:"Flujo 02", flow2_title:"Horarios y vacantes en tiempo real",
+      flow2_desc:"Visualización de clases con filtros por turno (Mañana / Tarde / Noche) y contador de vacantes visible directamente en la lista. Elimina la necesidad de preguntar en recepción o consultar una pizarra desactualizada.",
+      flow3_tag:"Flujo 03", flow3_title:"Inscripción digital con confirmación inmediata",
+      flow3_desc:"Modal de confirmación antes de reservar, pantalla de éxito con datos de la reserva y opción de añadir al calendario. La pantalla de cancelación usa el mismo patrón visual para mantener coherencia sin sorpresas.",
+      flow4_tag:"Flujo 04", flow4_title:"Sistema de alertas y mis reservas",
+      flow4_desc:"Notificaciones push del sistema antes de cada clase y vista de 'Mis reservas' con gestión completa. El usuario ya no necesita recordarlo: la app lo hace por él.",
+      screen_splash:"Splash", screen_home:"Inicio", screen_home_r:"Inicio con reservas",
+      screen_schedule:"Horarios", screen_schedule_f:"Horarios filtrados",
+      screen_modal:"Modal reserva", screen_confirmed:"Reserva confirmada", screen_cancelled:"Reserva cancelada",
+      screen_notif:"Notificación push", screen_bookings:"Mis reservas",
+      cta_title:"¿Trabajamos juntos?", cta_desc:"Si este proyecto te ha dado una idea de cómo trabajo, me encantaría contarte más.", cta_btn:"Contactar",
+      footer:"Diseñadora Multidisciplinar"
+    },
+    en: {
+      skip: "Skip to content",
+      back: "Back to portfolio",
+      tag: "UX/UI Design · Technical Test",
+      subtitle: "Full design of a gym mobile app in 72 hours: from research and ideation through to a high-fidelity navigable prototype.",
+      meta_type: "Type", meta_type_val: "Technical Test",
+      meta_role: "Role", meta_role_val: "UX/UI Designer",
+      meta_time: "Time", meta_tools: "Tools",
+      s1_label: "The challenge", s1_title: "Context and constraints",
+      s1_p1: "The challenge was to design a mobile app for a gym allowing users to view class schedules (Kickboxing, Zumba and Spinning), enroll, check available spots, and receive pre-class alerts.",
+      s1_p2: "The deliverable was a navigable high-fidelity prototype with at least 4 screens, plus the full ideation process documented in Figma. Time limit: 72 hours from brief receipt.",
+      s1_p3: "Before designing anything, I structured a planning sprint to organize the 72 hours efficiently: what to research, when to ideate, when to execute, and how much time to leave for prototype refinement.",
+      s1_quote: '"Gym users need an app to view class schedules (Kickboxing, Zumba and Spinning), enroll, see available spots, and receive alerts before each class, among other possibilities."',
+      s2_label: "Research", s2_title: "Keywords, benchmark & trends",
+      s2_p1: "Even though the brief defined the needs to cover, I wanted to make design decisions based on real context. I started by mapping the keywords that would define the project to ensure the conceptual direction was coherent.",
+      s2_p2: "I then conducted a benchmark of real gym apps, analyzing colors, typography, key interaction patterns, animation use, and information hierarchy. This let me identify what works well in the current market and where differentiation opportunities existed.",
+      placeholder_benchmark: "Add your benchmark screenshot here",
+      fig_benchmark: "Benchmark — analysis of real gym apps",
+      s3_label: "Empathy", s3_title: "User Persona",
+      s3_p1: "To empathize with the app's real user, I defined a User Persona representing the most common gym profile: someone with a tight schedule who needs to organize their classes without friction.",
+      s3_p2: "Mariana, 22, studies in the mornings, works in the afternoons, and goes to the gym at night. She plans her day meticulously but admits she sometimes forgets classes she signed up for. Her mobile usage level is high, and she expects the same efficiency from the app as she demands from her own schedule.",
+      placeholder_persona: "Add your User Persona screenshot here",
+      fig_persona: "User Persona — Mariana Nava · Student & worker · Zaragoza",
+      s4_label: "Analysis", s4_title: "Customer Journey — As Is",
+      s4_p1: "Before designing the solution, I mapped Mariana's current Customer Journey —without the app— to visualize how she feels at each stage of booking a class. This let me support the brief's stated needs with real evidence and uncover the true design opportunities.",
+      s4_p2: "The journey revealed 6 phases with clear pain points that became the design opportunities guiding the entire solution:",
+      placeholder_journey: "Add your Customer Journey screenshot here",
+      fig_journey: "As-Is Customer Journey · Scenario: booking a group class",
+      pain1_phase:"Search schedules", pain1_title:"Outdated information", pain1_desc:"She has to check the gym whiteboard, which isn't always up to date.", pain1_opp:"→ Real-time schedules inside the app",
+      pain2_phase:"Check availability", pain2_title:"Uncertainty about spots", pain2_desc:"She doesn't know if there'll be room or if she'll have to change class last minute.", pain2_opp:"→ Real-time vacancy visualization",
+      pain3_phase:"Enrollment", pain3_title:"Manual process, no confirmation", pain3_desc:"She signs up at reception and gets no clear confirmation of whether she's enrolled.", pain3_opp:"→ Digital enrollment with instant confirmation",
+      pain4_phase:"Reminder", pain4_title:"Forgetting classes", pain4_desc:"She writes it on a piece of paper or a post-it. Sometimes she simply forgets.", pain4_opp:"→ Push notification system before class",
+      s5_label:"Ideation", s5_title:"Crazy 8's",
+      s5_p1:"For the ideation exercise I chose the Crazy 8's technique for its versatility and its perfect fit with the time constraints. Applying it to each of the 4 main journey problems let me explore 8 different solutions for each before committing to a direction.",
+      s5_p2:"This process helped me identify which visual organization would best help the user meet their needs in each flow, and make informed decisions about hierarchy, navigation, and components before moving to wireframes.",
+      placeholder_crazy8:"Add your Crazy 8's screenshot here",
+      fig_crazy8:"Crazy 8's — ideation for the 4 main problems",
+      s6_label:"Visual Design", s6_title:"Visual identity and accessibility",
+      s6_p1:"With the design direction defined, I established Thunder Gym's visual identity: color palette, typography, and component system. All decisions were justified with accessibility criteria —minimum WCAG AA contrast ratios, readable text sizes, adequate touch targets for mobile.",
+      s6_p2:"Wireframes evolved progressively: first basic navigation structures, then incorporation of the visual identity, and finally refinement toward the high-fidelity prototype.",
+      placeholder_wire:"Wireframes", placeholder_styles:"Style guide",
+      fig_wire:"Wireframes — low fidelity", fig_styles:"Visual system — colors & typography",
+      s7_label:"Result", s7_title:"High-fidelity prototype",
+      s7_p1:"The final prototype is navigable and interactive, with micro-interactions that convey a real app experience: active/inactive button state changes, push notifications visible on the phone, and smooth transitions between screens.",
+      s7_p2:"The four main flows directly correspond to the four pain points identified in the Customer Journey: schedule browsing, vacancy checking, digital enrollment, and alert management.",
+      btn_figma:"View in Figma", btn_back_portfolio:"← Back to portfolio",
+      s8_label:"Screens", s8_title:"Designed flows",
+      s8_intro:"Each flow directly solves one of the four pain points identified in the Customer Journey. The screens are not decorative — every visual decision responds to a real user need.",
+      flow1_tag:"Flow 01", flow1_title:"App entry and personalized home",
+      flow1_desc:"Brand splash + home screen with a daily summary, upcoming reservations, and quick access to favorite classes. The user understands at a glance what's pending without needing to navigate.",
+      flow2_tag:"Flow 02", flow2_title:"Real-time schedules and vacancies",
+      flow2_desc:"Class visualization with shift filters (Morning / Afternoon / Evening) and vacancy counter visible directly in the list. Eliminates the need to ask at reception or check an outdated board.",
+      flow3_tag:"Flow 03", flow3_title:"Digital enrollment with instant confirmation",
+      flow3_desc:"Confirmation modal before booking, success screen with reservation details and option to add to calendar. The cancellation screen uses the same visual pattern for consistency without surprises.",
+      flow4_tag:"Flow 04", flow4_title:"Alert system and my bookings",
+      flow4_desc:"System push notifications before each class and a 'My Bookings' view with full management. The user no longer needs to remember — the app does it for them.",
+      screen_splash:"Splash", screen_home:"Home", screen_home_r:"Home with bookings",
+      screen_schedule:"Schedules", screen_schedule_f:"Filtered schedules",
+      screen_modal:"Booking modal", screen_confirmed:"Booking confirmed", screen_cancelled:"Booking cancelled",
+      screen_notif:"Push notification", screen_bookings:"My bookings",
+      cta_title:"Shall we work together?", cta_desc:"If this project gives you an idea of how I work, I'd love to tell you more.", cta_btn:"Get in touch",
+      footer:"Multidisciplinary Designer"
+    }
+  };
+
+  let lang = 'es';
+
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const k = el.getAttribute('data-t');
+      if (t[l][k]) el.textContent = t[l][k];
+    });
+    document.getElementById('btn-es').setAttribute('aria-pressed', l === 'es');
+    document.getElementById('btn-en').setAttribute('aria-pressed', l === 'en');
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('icon-moon').style.display = isDark ? 'none'  : 'block';
+    document.getElementById('icon-sun').style.display  = isDark ? 'block' : 'none';
+  }
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  setLang('es');
+</script>
+</body>
+</html>
       --card:       #ffffff;
       --card-soft:  #f0f0f8;
       --text:       #0a0a0f;
